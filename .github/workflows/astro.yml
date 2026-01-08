@@ -2,11 +2,10 @@ name: Deploy Astro site to Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
     paths:
-      - "docs/**"
       - ".github/workflows/deploy-site.yml"
-      - "CHANGELOG.md"
+      - "*"
   workflow_dispatch:
 
 permissions:
@@ -19,7 +18,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "docs"
+  BUILD_PATH: ""
 
 jobs:
   build:
