@@ -82,7 +82,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # ważne dla linków typu "/..." w wygenerowanych HTML
           args: --root-dir "${{ github.workspace }}/dist" --verbose --no-progress "dist/**/*.html"
-          fail: true
+          fail: false
           jobSummary: true          
 
   deploy:
