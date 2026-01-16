@@ -8,11 +8,13 @@ import ModCard from "./ModCard.astro";
 const featuredMods = getFeaturedMods();
 ---
 
-<section class="section bg-white dark:bg-dark-900">
+<section class="section relative z-10">
   <div class="container-wide">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Mods</h2>
-      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+        Featured Mods
+      </h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">
         Quality-tested mods that enhance your Upload Labs experience
       </p>
     </div>
@@ -25,7 +27,7 @@ const featuredMods = getFeaturedMods();
           ))}
         </div>
       ) : (
-        <div class="text-center py-12 text-gray-500 dark:text-gray-400">
+        <div class="text-center py-12 text-gray-500">
           <p>No featured mods available yet. Check back soon!</p>
         </div>
       )

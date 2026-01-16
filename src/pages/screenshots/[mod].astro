@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { screenshots } from "../../data/screenshots";
+import { mods } from "../../data/mods";
+
+export function getStaticPaths() {
+  // Get mod names from the mods registry (excluding the main bundle)
+  const registeredMods = mods
+    .filter((m) => m.slug !== "tajs-mod")
+    .map((m) => m.name);
+
+  // Also include any mods found in screenshot folders
+  const screenshotMods = [...new Set(screenshots.map((s) => s.mod))];
+
+  // Combine both sources
+  const allMods = [...new Set([...registeredMods, ...screenshotMods])];
+
+  return allMods.map((mod) => ({
+    params: { mod },
+    props: { modName: mod },
+  }));
+}
+
+const { mod } = Astro.params;
+const { modName } = Astro.props;
+
+// Filter screenshots for the current mod
+const filteredScreenshots = screenshots.filter((s) => s.mod === modName);
+---
+
+<BaseLayout title={`${modName} Screenshots`}>
+  <div class="pt-24 pb-12 container-wide">
+    <div class="text-center mb-12 animate-fade-in">
+      <h1
+        class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent"
+      >
+        {modName} Gallery
+      </h1>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+        Explore visual highlights and features from the {modName} mod.
+      </p>
+    </div>
+
+    {
+      filteredScreenshots.length > 0 ? (
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          {filteredScreenshots.map((shot) => (
+            <div class="break-inside-avoid group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-brand-purple/50 transition-all duration-300 hover:shadow-lg hover:shadow-brand-purple/20">
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <p class="text-white font-medium text-sm translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  {shot.alt}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
+          <p class="text-xl text-gray-400">
+            No screenshots found for this mod yet.
+          </p>
+          <a
+            href={`${import.meta.env.BASE_URL}mods/`}
+            class="btn-primary mt-6 inline-block"
+          >
+            Explore other mods
+          </a>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

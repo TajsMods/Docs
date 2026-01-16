@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
-import TrustBar from "../components/TrustBar.astro";
 import FeaturedMods from "../components/FeaturedMods.astro";
 import Highlights from "../components/Highlights.astro";
 import QuickActions from "../components/QuickActions.astro";
@@ -73,11 +72,8 @@ const externalLinks = [
 ---
 
 <BaseLayout title="Home">
-  <!-- Hero -->
+  <!-- Hero with integrated Trust Bar -->
   <Hero />
-
-  <!-- Trust Bar -->
-  <TrustBar />
 
   <!-- Featured Mods -->
   <FeaturedMods />
@@ -95,11 +91,13 @@ const externalLinks = [
   <GettingStarted />
 
   <!-- Hub Navigation -->
-  <section class="section bg-white dark:bg-dark-900">
+  <section class="section relative z-10">
     <div class="container-wide">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Explore the Hub</h2>
-        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+          Explore the Hub
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
           Everything you need to know about Taj's Mods in one place
         </p>
       </div>
@@ -117,8 +115,10 @@ const externalLinks = [
         }
       </div>
 
-      <div class="border-t border-gray-200 dark:border-dark-700 pt-12">
-        <h3 class="text-xl font-semibold text-center mb-6">External Links</h3>
+      <div class="border-t border-white/10 pt-12">
+        <h3 class="text-xl font-semibold text-center mb-6 text-white">
+          External Links
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {
             externalLinks.map((link) => (
@@ -137,13 +137,13 @@ const externalLinks = [
   </section>
 
   <!-- FAQ Preview -->
-  <section class="section bg-gray-50 dark:bg-dark-950">
+  <section class="section relative z-10">
     <div class="container-wide">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
           Frequently Asked Questions
         </h2>
-        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p class="text-gray-400 max-w-2xl mx-auto">
           Quick answers to common questions
         </p>
       </div>

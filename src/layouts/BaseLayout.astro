@@ -15,7 +15,7 @@ interface Props {
 const {
   title,
   description = "Your hub for Upload Labs mods. Quality-of-life enhancements, visual tweaks, and powerful tools.",
-  image = `${import.meta.env.BASE_URL}brand/Header_-_3840x.png`,
+  image = `${import.meta.env.BASE_URL}brand/TajsModHeader.png`,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -23,7 +23,7 @@ const socialImageURL = new URL(image, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -55,15 +55,14 @@ const socialImageURL = new URL(image, Astro.site);
 
     <!-- Theme Script (prevent flash + View Transitions support) -->
     <script is:inline>
-      // Apply theme immediately to prevent flash
+      // Apply dark theme by default (cosmic design is dark-only)
+      document.documentElement.classList.add("dark");
+
+      // Keep preference support but default to dark
       (function () {
         const theme = localStorage.getItem("theme");
-        if (
-          theme === "dark" ||
-          (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-          document.documentElement.classList.add("dark");
-        } else {
+        if (theme === "light") {
+          // Allow light mode if explicitly set
           document.documentElement.classList.remove("dark");
         }
       })();
@@ -71,36 +70,27 @@ const socialImageURL = new URL(image, Astro.site);
       // Re-apply theme after View Transitions navigation
       document.addEventListener("astro:after-swap", () => {
         const theme = localStorage.getItem("theme");
-        if (
-          theme === "dark" ||
-          (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-          document.documentElement.classList.add("dark");
-        } else {
+        if (theme === "light") {
           document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
         }
       });
 
       // Aggressive memory cleanup for View Transitions
-      // Clears caches before AND after swap to keep only current page in memory
-
       document.addEventListener("astro:before-swap", (e) => {
-        // Clear heavy libraries before swap
         try {
           if (window.mermaid) window.mermaid = undefined;
           if (window.__pagefind) window.__pagefind = undefined;
         } catch (err) {}
 
-        // Clear any detached DOM references
         const oldImages = document.querySelectorAll("img");
         oldImages.forEach((img) => (img.src = ""));
       });
 
       document.addEventListener("astro:after-swap", () => {
-        // Force garbage collection hint after navigation
         setTimeout(() => {
-          // Clear any leftover references from previous page
-          if (window.gc) window.gc(); // Only works in some browsers with flags
+          if (window.gc) window.gc();
         }, 100);
       });
     </script>
@@ -109,14 +99,37 @@ const socialImageURL = new URL(image, Astro.site);
     <ViewTransitions />
   </head>
   <body
-    class="min-h-screen bg-gray-50 dark:bg-dark-950 text-gray-900 dark:text-gray-100"
+    class="min-h-screen font-sans antialiased text-gray-200 relative overflow-x-hidden"
+    style="background-color: #0f111a;"
   >
+    <!-- Cosmic Background Effects -->
+    <div
+      class="fixed inset-0 z-0 pointer-events-none bg-page-gradient opacity-80"
+    >
+    </div>
+    <div class="fixed inset-0 z-0 pointer-events-none star-bg opacity-30"></div>
+
+    <!-- Glowing Orbs -->
+    <div
+      class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"
+    >
+    </div>
+    <div
+      class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"
+    >
+    </div>
+
+    <!-- Navigation -->
     <NavBar />
     <CommandPalette />
     <FloatingSearch />
-    <main>
+
+    <!-- Main Content -->
+    <main class="relative z-10">
       <slot />
     </main>
+
+    <!-- Footer -->
     <Footer />
 
     <!-- Theme Toggle Script -->
@@ -158,29 +171,25 @@ const socialImageURL = new URL(image, Astro.site);
     <script>
       function initMermaidZoom() {
         document.querySelectorAll(".mermaid").forEach((mermaid) => {
-          // Skip if already processed
           if (mermaid.closest(".mermaid-zoomable")) return;
 
-          // Wrap the mermaid element
           const wrapper = document.createElement("div");
           wrapper.className = "mermaid-zoomable";
           wrapper.style.cssText =
-            "position: relative; overflow: auto; max-height: 600px; border: 1px solid #e5e7eb; border-radius: 0.75rem; margin: 1rem 0;";
+            "position: relative; overflow: auto; max-height: 600px; border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; margin: 1rem 0;";
 
           const content = document.createElement("div");
           content.className = "mermaid-zoom-content";
           content.style.cssText =
             "min-width: fit-content; padding: 1rem; transform-origin: top left; transition: transform 0.1s ease-out;";
 
-          // Move mermaid into wrapper
           mermaid.parentNode?.insertBefore(wrapper, mermaid);
           content.appendChild(mermaid);
           wrapper.appendChild(content);
 
-          // Add zoom hint
           const hint = document.createElement("div");
           hint.style.cssText =
-            "position: absolute; bottom: 8px; right: 8px; font-size: 11px; color: #9ca3af; pointer-events: none; background: rgba(255,255,255,0.8); padding: 2px 6px; border-radius: 4px;";
+            "position: absolute; bottom: 8px; right: 8px; font-size: 11px; color: #9ca3af; pointer-events: none; background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px;";
           hint.textContent = "Ctrl+Scroll to zoom";
           wrapper.appendChild(hint);
 
@@ -188,7 +197,6 @@ const socialImageURL = new URL(image, Astro.site);
           const minScale = 0.3;
           const maxScale = 4;
 
-          // Wheel zoom
           wrapper.addEventListener(
             "wheel",
             (e: WheelEvent) => {
@@ -202,7 +210,6 @@ const socialImageURL = new URL(image, Astro.site);
             { passive: false }
           );
 
-          // Double-click to reset
           wrapper.addEventListener("dblclick", () => {
             scale = 1;
             content.style.transform = "scale(1)";
@@ -210,7 +217,6 @@ const socialImageURL = new URL(image, Astro.site);
         });
       }
 
-      // Run after Mermaid renders (with delay to ensure diagrams are ready)
       document.addEventListener("astro:page-load", () =>
         setTimeout(initMermaidZoom, 500)
       );

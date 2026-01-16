@@ -8,14 +8,13 @@ import path from 'node:path';
 export interface Screenshot {
   src: string;
   alt: string;
-  featureId?: string;
-  category?: string;
+  mod: string; // The mod this screenshot belongs to (folder name)
 }
 
 const SCREENSHOTS_DIR = path.resolve(import.meta.dirname, '../../public/screenshots');
 
 /**
- * Auto-scan screenshots directory
+ * Auto-scan screenshots directory recursively
  */
 export function getScreenshots(): Screenshot[] {
   const screenshots: Screenshot[] = [];
@@ -26,27 +25,43 @@ export function getScreenshots(): Screenshot[] {
       return screenshots;
     }
     
-    const files = fs.readdirSync(SCREENSHOTS_DIR);
-    
-    for (const file of files) {
-      // Only include image files
-      if (!/\.(png|jpg|jpeg|gif|webp)$/i.test(file)) continue;
+    // Helper to scan a directory
+    const scanDir = (dirPath: string, modName: string = 'General') => {
+      const entries = fs.readdirSync(dirPath, { withFileTypes: true });
       
-      // Skip .import files (Godot artifacts)
-      if (file.endsWith('.import')) continue;
-      
-      // Generate alt text from filename
-      const alt = file
-        .replace(/\.[^.]+$/, '') // Remove extension
-        .replace(/[-_]/g, ' ')   // Replace separators with spaces
-        .replace(/^\d+\s*/, '')  // Remove leading numbers
-        .trim() || 'Screenshot';
-      
-      screenshots.push({
-        src: `/screenshots/${file}`,
-        alt,
-      });
-    }
+      for (const entry of entries) {
+        const fullPath = path.join(dirPath, entry.name);
+        
+        if (entry.isDirectory()) {
+          // Recursively scan subdirectories, using the folder name as the mod name
+          scanDir(fullPath, entry.name);
+        } else if (entry.isFile()) {
+           // Only include image files
+          if (!/\.(png|jpg|jpeg|gif|webp)$/i.test(entry.name)) continue;
+          
+          // Skip .import files (Godot artifacts)
+          if (entry.name.endsWith('.import')) continue;
+          
+          // Generate alt text from filename
+          const alt = entry.name
+            .replace(/\.[^.]+$/, '') // Remove extension
+            .replace(/[-_]/g, ' ')   // Replace separators with spaces
+            .replace(/^\d+\s*/, '')  // Remove leading numbers
+            .trim() || 'Screenshot';
+          
+            // Calculate relative path for the src
+            const relativePath = path.relative(path.resolve(import.meta.dirname, '../../public'), fullPath).replace(/\\/g, '/');
+
+          screenshots.push({
+            src: `/${relativePath}`,
+            alt,
+            mod: modName
+          });
+        }
+      }
+    };
+
+    scanDir(SCREENSHOTS_DIR);
     
     console.log(`[screenshots] Found ${screenshots.length} screenshots`);
   } catch (error) {

@@ -1,0 +1,34 @@
+---
+title: Taj's Mods Documentation
+description: Complete documentation for Taj's Mods - quality-of-life enhancements and visual tweaks for Upload Labs.
+template: splash
+hero:
+  tagline: Complete documentation for Taj's Mods
+  actions:
+    - text: Core API
+      link: /docs/core/api/
+      icon: right-arrow
+    - text: Keybinds API
+      link: /docs/core/keybinds_api/
+      icon: document
+      variant: minimal
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Documentation
+
+<CardGrid stagger>
+  <Card title="Core API" icon="open-book">
+    [Core API documentation](/docs/core/api/) for developers.
+  </Card>
+  <Card title="Keybinds" icon="rocket">
+    [Keybinds API](/docs/core/keybinds_api/) reference.
+  </Card>
+  <Card title="Modules" icon="star">
+    [Module Guide](/docs/core/module_guide/) for creating new modules.
+  </Card>
+  <Card title="Settings" icon="setting">
+    [Settings and Migrations](/docs/core/settings_and_migrations/) guide.
+  </Card>
+</CardGrid>

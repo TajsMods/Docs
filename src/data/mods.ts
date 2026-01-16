@@ -79,10 +79,10 @@ From the Command Palette for quick access to any feature, to customizable group 
       { type: 'issues', url: 'https://github.com/TajemnikTV/TajsMod/issues', label: 'Report Issues' },
       { type: 'discord', url: 'https://discord.gg/enigmadev', label: 'Discord' },
     ],
-    version: '0.1.0',
-    updatedAt: '2025-01-01',
-    heroImage: '/brand/TajsModHeader.png',
-    logo: '/brand/TajsModLogo.png',
+    version: '0.6.1',
+    updatedAt: '2026-01-16',
+    heroImage: 'brand/TajsModHeader.png',
+    logo: 'brand/TajsModLogo.png',
     screenshots: [
       '/screenshots/command-palette.png',
       '/screenshots/settings-panel.png',
@@ -113,17 +113,58 @@ From the Command Palette for quick access to any feature, to customizable group 
     featured: true,
     game: 'Upload Labs',
   },
-  // Add more mods here as they become available
-  // Example structure for a new mod:
-  // {
-  //   slug: 'another-mod',
-  //   name: 'Another Mod',
-  //   shortDescription: 'Description here',
-  //   status: 'wip',
-  //   tags: ['QoL'],
-  //   links: [],
-  //   featured: false,
-  // },
+  {
+    slug: 'qol',
+    name: 'QoL',
+    shortDescription: 'Quality-of-life improvements and convenience features for a smoother gameplay experience.',
+    status: 'stable',
+    tags: ['QoL', 'Utility'],
+    links: [
+      { type: 'github', url: 'https://github.com/TajsMods/', label: 'GitHub' },
+    ],
+    logo: 'brand/QoL - 512x.png',
+    featured: true,
+    game: 'Upload Labs',
+  },
+  {
+    slug: 'cheats',
+    name: 'Cheats',
+    shortDescription: 'Debug and testing tools for developers and power users. Unlock hidden features and test scenarios.',
+    status: 'beta',
+    tags: ['Debug', 'Tools', 'Utility'],
+    links: [
+      { type: 'github', url: 'https://github.com/TajsMods/', label: 'GitHub' },
+    ],
+    logo: 'brand/Cheats - 512x.png',
+    featured: true,
+    game: 'Upload Labs',
+  },
+  {
+    slug: 'command-palette',
+    name: 'Command Palette',
+    shortDescription: 'Quick access to any command or action with a fuzzy-search powered popup interface.',
+    status: 'stable',
+    tags: ['UI', 'Utility', 'QoL'],
+    links: [
+      { type: 'github', url: 'https://github.com/TajsMods/', label: 'GitHub' },
+    ],
+    logo: 'brand/Command Palette - 512x.png',
+    featured: true,
+    game: 'Upload Labs',
+  },
+  {
+    slug: 'core',
+    name: 'Core',
+    shortDescription: 'The foundational framework that powers all other mods. Required as a dependency.',
+    status: 'stable',
+    tags: ['Utility', 'Tools'],
+    links: [
+      { type: 'github', url: 'https://github.com/TajsMods/', label: 'GitHub' },
+    ],
+    logo: 'brand/Core - 512x.png',
+    featured: false,
+    game: 'Upload Labs',
+  },
 ];
 
 /**

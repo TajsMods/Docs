@@ -14,42 +14,32 @@ const { title, description, href, icon, external = false } = Astro.props;
   href={href}
   target={external ? "_blank" : undefined}
   rel={external ? "noopener noreferrer" : undefined}
-  class="card-interactive flex items-start gap-4 group"
+  class="glass-card rounded-xl p-5 flex items-start gap-4 group hover:bg-white/5 transition-all duration-300"
 >
   <div
-    class="flex-shrink-0 w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center text-2xl group-hover:bg-accent-500/20 transition-colors"
+    class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300"
   >
     {icon}
   </div>
   <div class="flex-1 min-w-0">
     <div class="flex items-center gap-2">
-      <h3 class="font-semibold text-lg text-gray-900 dark:text-white">
+      <h3
+        class="font-semibold text-lg text-white group-hover:text-primary transition-colors"
+      >
         {title}
       </h3>
       {
         external && (
-          <svg
-            class="w-4 h-4 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            />
-          </svg>
+          <span class="material-icons text-sm text-gray-500">open_in_new</span>
         )
       }
     </div>
-    <p class="text-gray-600 dark:text-gray-400 text-sm">
+    <p class="text-gray-400 text-sm">
       {description}
     </p>
   </div>
   <svg
-    class="w-5 h-5 text-gray-400 group-hover:text-accent-500 transition-colors flex-shrink-0"
+    class="w-5 h-5 text-gray-500 group-hover:text-primary transition-colors flex-shrink-0 mt-1"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
