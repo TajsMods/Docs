@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.mjs";
 
-@layer base {
   html {
     scroll-behavior: smooth;
   }
@@ -24,9 +22,7 @@
   * {
     @apply transition-colors duration-200;
   }
-}
 
-@layer components {
   /* Glass panel effect - for navigation and floating elements */
   .glass-panel {
     background: rgba(30, 32, 45, 0.6);
@@ -78,13 +74,21 @@
 
   /* Legacy card styles (updated for new design) */
   .card {
-    @apply glass-card rounded-2xl p-6;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    @apply rounded-2xl p-6;
   }
 
   .card-interactive {
-    @apply card cursor-pointer
-           hover:bg-white/5
-           transition-all duration-300;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    @apply rounded-2xl p-6 cursor-pointer hover:bg-white/5 transition-all duration-300;
   }
 
   .card-interactive:hover {
@@ -93,7 +97,11 @@
 
   /* Glass utility class (updated) */
   .glass {
-    @apply glass-panel;
+    background: rgba(30, 32, 45, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
 
   .section {
@@ -166,9 +174,7 @@
   .tag-yellow {
     @apply bg-yellow-500/20 text-yellow-500 border-yellow-500/30;
   }
-}
 
-@layer utilities {
   .animate-in {
     animation: animateIn 0.5s ease-out forwards;
   }
@@ -209,8 +215,6 @@
     background-size: 550px 550px, 350px 350px, 250px 250px;
     background-position: 0 0, 40px 60px, 130px 270px;
   }
-}
-
 .mermaid {
   overflow: auto;
   max-height: 500px;

@@ -1,9 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import astroMermaid from 'astro-mermaid';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://tajsmods.github.io',
@@ -22,6 +22,9 @@ export default defineConfig({
   experimental: {
     contentIntellisense: true,
   },
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
     // Sitemap for SEO
     sitemap(),
@@ -31,10 +34,6 @@ export default defineConfig({
         securityLevel: 'loose',
         flowchart: { htmlLabels: true },
       },
-    }),
-    tailwind({
-      // Disable injecting base styles so we have full control
-      applyBaseStyles: false,
     }),
     starlight({
       title: "Taj's Mods",
