@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import CommandPalette from "../components/CommandPalette.astro";
@@ -96,7 +96,7 @@ const socialImageURL = new URL(image, Astro.site);
     </script>
 
     <!-- View Transitions for smooth navigation -->
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body
     class="min-h-screen font-sans antialiased text-gray-200 relative overflow-x-hidden"

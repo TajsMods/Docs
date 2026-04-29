@@ -47,21 +47,21 @@
 
   /* Button with glow effect */
   .btn-glow {
-    box-shadow: 0 0 15px rgba(255, 127, 54, 0.3);
+    box-shadow: 0 0 15px rgba(0, 219, 233, 0.3);
     transition: all 0.3s ease;
   }
   
   .btn-glow:hover {
-    box-shadow: 0 0 25px rgba(255, 127, 54, 0.5);
+    box-shadow: 0 0 25px rgba(0, 219, 233, 0.5);
   }
 
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 
-           bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400
+           bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400
            text-white font-semibold rounded-lg
-           shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40
+           shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40
            transition-all duration-200 ease-out
-           focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2
+           focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2
            focus:ring-offset-dark-950
            active:scale-95;
   }
@@ -88,7 +88,7 @@
   }
 
   .card-interactive:hover {
-    border-color: rgba(255, 127, 54, 0.5);
+    border-color: rgba(0, 219, 233, 0.5);
   }
 
   /* Glass utility class (updated) */
@@ -109,7 +109,7 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-orange-400 via-orange-500 to-red-500
+    @apply bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500
            bg-clip-text text-transparent;
   }
 
@@ -127,11 +127,11 @@
            text-sm font-medium rounded-full
            text-white
            transition-colors cursor-pointer;
-    background-color: #ff7f36;
+    background-color: #00dbe9;
   }
 
   .chip-active:hover {
-    background-color: #e06b2b;
+    background-color: #06b6d4;
   }
 
   /* Tag/badge styles from the design */
