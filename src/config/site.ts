@@ -6,6 +6,6 @@ export const siteConfig = {
   discord: "https://discord.gg/enigmadev",
   docs: "/docs",
   changelog: "/changelog",
-  godotVersion: "4.6.2-stable",
-  modLoaderVersion: "7.0.1",
+  godotVersion: "4.5.1",
+  modLoaderVersion: "7.0.0",
 };

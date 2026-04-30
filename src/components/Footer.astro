@@ -1,5 +1,6 @@
 ---
 import { links } from "../data/links";
+import { siteConfig } from "../config/site";
 
 const footerLinks = [
   { name: "Home", href: `${import.meta.env.BASE_URL}` },
@@ -103,7 +104,7 @@ const externalLinks = links.slice(0, 4);
           Subscribe on Steam Workshop for automatic updates.
         </p>
         <a
-          href="https://steamcommunity.com/sharedfiles/filedetails/?id=3628222709"
+          href={siteConfig.steamWorkshop}
           target="_blank"
           rel="noopener noreferrer"
           class="btn-glow inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-transform active:scale-95"

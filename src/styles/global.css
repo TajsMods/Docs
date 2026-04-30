@@ -212,11 +212,6 @@
     background-size: 550px 550px, 350px 350px, 250px 250px;
     background-position: 0 0, 40px 60px, 130px 270px;
   }
-.mermaid {
-  overflow: auto;
-  max-height: 500px;
-}
-
 /* Code blocks with copy button */
 pre {
   position: relative;
@@ -235,22 +230,4 @@ pre:hover .copy-code-btn {
 /* Smooth scrolling for anchor links */
 html {
   scroll-padding-top: 5rem;
-}
-
-/* Material icons sizing */
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
 }

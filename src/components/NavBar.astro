@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 import { mods } from "../data/mods";
+import { siteConfig } from "../config/site";
 
 const navItems = [
   { name: "Home", href: `${import.meta.env.BASE_URL}` },
@@ -118,7 +119,7 @@ const currentPath = Astro.url.pathname;
       <ThemeToggle />
 
       <a
-        href="https://steamcommunity.com/sharedfiles/filedetails/?id=3628222709"
+        href={siteConfig.steamWorkshop}
         target="_blank"
         rel="noopener noreferrer"
         class="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-orange-500/20 transition-all transform hover:scale-105 hidden sm:inline-flex"
@@ -199,7 +200,7 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <a
-        href="https://steamcommunity.com/sharedfiles/filedetails/?id=3628222709"
+        href={siteConfig.steamWorkshop}
         target="_blank"
         rel="noopener noreferrer"
         class="btn-primary mt-4 justify-center"
