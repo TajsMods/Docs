@@ -1,0 +1,17 @@
+---
+import { siteConfig } from "../config/site";
+---
+
+<footer class="w-full mt-auto bg-slate-950 border-t border-white/5">
+  <div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 max-w-[1440px] mx-auto">
+    <div class="text-primary font-['Inter'] text-sm uppercase tracking-widest mb-6 md:mb-0">
+      © {new Date().getFullYear()} Taj's Mods. Licensed under MIT.
+    </div>
+    <nav class="flex gap-8 font-['Inter'] text-sm uppercase tracking-widest">
+      <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href={siteConfig.githubReleases} target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+      <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href={siteConfig.steamWorkshop} target="_blank" rel="noopener noreferrer">Steam Workshop</a>
+      <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href={siteConfig.discord} target="_blank" rel="noopener noreferrer">Discord</a>
+      <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href={`${import.meta.env.BASE_URL}docs`}>Documentation</a>
+    </nav>
+  </div>
+</footer>

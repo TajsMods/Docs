@@ -1,5 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { siteConfig } from "../config/site";
 import CopyButton from "../components/CopyButton.astro";
 import PageActions from "../components/PageActions.astro";
 
@@ -30,7 +31,7 @@ const troubleshootingConfig = {
 // const BASE_URL = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout
+<SiteLayout
   title="Troubleshooting"
   description="Diagnostic checklist and common fixes for Taj's Mod issues."
 >
@@ -121,7 +122,7 @@ const troubleshootingConfig = {
             </h4>
             <p class="text-red-600 dark:text-red-300 text-sm">
               Visit the <a
-                href="https://steamcommunity.com/sharedfiles/filedetails/?id=3394961814"
+                href={siteConfig.steamWorkshop}
                 target="_blank"
                 class="underline">Steam Workshop page</a
               > and click "Subscribe".
@@ -436,4 +437,4 @@ const troubleshootingConfig = {
       </div>
     </div>
   </section>
-</BaseLayout>
+</SiteLayout>

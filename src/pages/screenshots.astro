@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
 import { screenshots } from "../data/screenshots";
 import PageActions from "../components/PageActions.astro";
 
 const BASE_URL = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout
+<SiteLayout
   title="Screenshots"
   description="Gallery of Taj's Mod UI and features in action."
 >
@@ -165,7 +165,7 @@ const BASE_URL = import.meta.env.BASE_URL;
     >
     </p>
   </div>
-</BaseLayout>
+</SiteLayout>
 
 <script define:vars={{ screenshotCount: screenshots.length }}>
   function initLightbox() {

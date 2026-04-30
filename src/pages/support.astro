@@ -1,9 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { siteConfig } from "../config/site";
 import { links } from "../data/links";
 ---
 
-<BaseLayout
+<SiteLayout
   title="Support"
   description="Support Taj's Mod development. Learn about ways to contribute, report issues, and help the project grow."
 >
@@ -58,7 +59,7 @@ import { links } from "../data/links";
             second and makes a big difference.
           </p>
           <a
-            href="https://steamcommunity.com/sharedfiles/filedetails/?id=3628222709"
+            href={siteConfig.steamWorkshop}
             target="_blank"
             rel="noopener noreferrer"
             class="btn-secondary text-sm"
@@ -143,7 +144,7 @@ import { links } from "../data/links";
             best advertising.
           </p>
           <a
-            href="https://steamcommunity.com/sharedfiles/filedetails/?id=3628222709"
+            href={siteConfig.steamWorkshop}
             target="_blank"
             rel="noopener noreferrer"
             class="btn-secondary text-sm"
@@ -166,4 +167,4 @@ import { links } from "../data/links";
       </div>
     </div>
   </section>
-</BaseLayout>
+</SiteLayout>

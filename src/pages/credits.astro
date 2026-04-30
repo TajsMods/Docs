@@ -1,5 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { siteConfig } from "../config/site";
 import PageActions from "../components/PageActions.astro";
 import { license } from "../data/parse-license";
 
@@ -34,7 +35,7 @@ const credits = {
 };
 ---
 
-<BaseLayout
+<SiteLayout
   title="Credits & License"
   description="Acknowledgments, credits, and licensing information for Taj's Mod."
 >
@@ -285,4 +286,4 @@ const credits = {
       </div>
     </div>
   </section>
-</BaseLayout>
+</SiteLayout>
