@@ -2,13 +2,12 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { screenshots } from "../data/screenshots";
 import PageActions from "../components/PageActions.astro";
-
-const BASE_URL = import.meta.env.BASE_URL;
+import { sitePath } from "../utils/urls";
 ---
 
 <SiteLayout
   title="Screenshots"
-  description="Gallery of Taj's Mod UI and features in action."
+  description="Gallery of Taj's Mods UI and features in action."
 >
   <section class="py-16 md:py-20 relative overflow-hidden border-b border-white/5">
     <div class="container-wide text-center relative z-10">
@@ -20,7 +19,7 @@ const BASE_URL = import.meta.env.BASE_URL;
     <div class="absolute -top-24 -right-24 w-96 h-96 bg-surface-tint/5 rounded-full blur-[100px]"></div>
   </section>
 
-  <section class="section">
+  <section class="section relative z-10">
     <div class="container-wide">
       {
         screenshots.length > 0 ? (
@@ -30,21 +29,21 @@ const BASE_URL = import.meta.env.BASE_URL;
           >
             {screenshots.map((screenshot, index) => (
               <button
-                class="screenshot-item group relative aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-dark-800 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+                class="screenshot-item group relative aspect-video rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-surface-tint focus:ring-offset-2 focus:ring-offset-bg-dark"
                 data-index={index}
-                data-src={`${BASE_URL}${screenshot.src}`}
+                data-src={sitePath(screenshot.src)}
                 data-alt={screenshot.alt}
               >
                 <img
-                  src={`${BASE_URL}${screenshot.src}`}
+                  src={sitePath(screenshot.src)}
                   alt={screenshot.alt}
                   loading="lazy"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                  <div class="opacity-0 group-hover:opacity-100 transition-opacity">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                  <div class="opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-300">
                     <svg
-                      class="w-10 h-10 text-white drop-shadow-lg"
+                      class="w-12 h-12 text-white drop-shadow-2xl"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -58,7 +57,7 @@ const BASE_URL = import.meta.env.BASE_URL;
                     </svg>
                   </div>
                 </div>
-                <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+                <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                   <p class="text-white text-sm font-medium truncate">
                     {screenshot.alt}
                   </p>
@@ -67,19 +66,18 @@ const BASE_URL = import.meta.env.BASE_URL;
             ))}
           </div>
         ) : (
-          <div class="text-center py-16">
-            <div class="text-6xl mb-4 opacity-50">📸</div>
-            <p class="text-gray-500 text-lg mb-4">No screenshots yet</p>
-            <p class="text-gray-400 text-sm">
-              Screenshots will appear here once added to{" "}
-              <code>/public/screenshots/</code>
+          <div class="text-center py-24 glass-card rounded-2xl border border-white/5">
+            <div class="text-6xl mb-6 opacity-30">📸</div>
+            <p class="text-gray-400 text-lg mb-2">No screenshots found in database</p>
+            <p class="text-gray-500 text-sm font-mono">
+              ADD ASSETS TO: /public/screenshots/
             </p>
           </div>
         )
       }
 
       <!-- Page Actions -->
-      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-dark-700">
+      <div class="mt-16 pt-8 border-t border-white/10">
         <PageActions editPath="/screenshots.astro" />
       </div>
     </div>
@@ -88,14 +86,14 @@ const BASE_URL = import.meta.env.BASE_URL;
   <!-- Lightbox -->
   <div
     id="lightbox"
-    class="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm hidden items-center justify-center"
+    class="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md hidden items-center justify-center p-4"
     role="dialog"
     aria-modal="true"
     aria-label="Image lightbox"
   >
     <button
       id="lightbox-close"
-      class="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors"
+      class="absolute top-6 right-6 p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all"
       aria-label="Close lightbox"
     >
       <svg
@@ -114,11 +112,11 @@ const BASE_URL = import.meta.env.BASE_URL;
 
     <button
       id="lightbox-prev"
-      class="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors"
+      class="absolute left-6 top-1/2 -translate-y-1/2 p-4 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all"
       aria-label="Previous image"
     >
       <svg
-        class="w-8 h-8"
+        class="w-10 h-10"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -133,11 +131,11 @@ const BASE_URL = import.meta.env.BASE_URL;
 
     <button
       id="lightbox-next"
-      class="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors"
+      class="absolute right-6 top-1/2 -translate-y-1/2 p-4 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all"
       aria-label="Next image"
     >
       <svg
-        class="w-8 h-8"
+        class="w-10 h-10"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -150,95 +148,102 @@ const BASE_URL = import.meta.env.BASE_URL;
       </svg>
     </button>
 
-    <img
-      id="lightbox-image"
-      src=""
-      alt=""
-      class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
-    />
-
-    <p
-      id="lightbox-caption"
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white text-center px-4 py-2 bg-black/50 rounded-lg max-w-lg"
-    >
-    </p>
+    <div class="relative max-w-5xl w-full flex flex-col items-center">
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl border border-white/10"
+      />
+      <div class="mt-6 px-6 py-3 bg-white/5 border border-white/10 backdrop-blur-md rounded-full">
+        <p
+          id="lightbox-caption"
+          class="text-white text-sm font-medium tracking-wide"
+        >
+        </p>
+      </div>
+    </div>
   </div>
 </SiteLayout>
 
-<script define:vars={{ screenshotCount: screenshots.length }}>
-  function initLightbox() {
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightbox-image");
-    const lightboxCaption = document.getElementById("lightbox-caption");
-    const closeBtn = document.getElementById("lightbox-close");
-    const prevBtn = document.getElementById("lightbox-prev");
-    const nextBtn = document.getElementById("lightbox-next");
-    const items = document.querySelectorAll(".screenshot-item");
+<script is:inline>
+  (function() {
+    function initLightbox() {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightbox-image");
+      const lightboxCaption = document.getElementById("lightbox-caption");
+      const closeBtn = document.getElementById("lightbox-close");
+      const prevBtn = document.getElementById("lightbox-prev");
+      const nextBtn = document.getElementById("lightbox-next");
+      const items = document.querySelectorAll(".screenshot-item");
+      const screenshotCount = items.length;
 
-    if (!lightbox || !lightboxImage) return;
+      if (!lightbox || !lightboxImage || screenshotCount === 0) return;
 
-    let currentIndex = 0;
+      let currentIndex = 0;
 
-    function open(index) {
-      currentIndex = index;
-      const item = items[index];
-      if (!item) return;
+      function open(index) {
+        currentIndex = index;
+        const item = items[index];
+        if (!item) return;
 
-      lightboxImage.src = item.dataset.src || "";
-      lightboxImage.alt = item.dataset.alt || "";
-      lightboxCaption.textContent = item.dataset.alt || "";
+        lightboxImage.src = item.dataset.src || "";
+        lightboxImage.alt = item.dataset.alt || "";
+        lightboxCaption.textContent = item.dataset.alt || "";
 
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
-      document.body.style.overflow = "hidden";
-    }
-
-    function close() {
-      lightbox.classList.add("hidden");
-      lightbox.classList.remove("flex");
-      document.body.style.overflow = "";
-    }
-
-    function prev() {
-      currentIndex = (currentIndex - 1 + screenshotCount) % screenshotCount;
-      open(currentIndex);
-    }
-
-    function next() {
-      currentIndex = (currentIndex + 1) % screenshotCount;
-      open(currentIndex);
-    }
-
-    // Event listeners
-    items.forEach((item, index) => {
-      item.addEventListener("click", () => open(index));
-    });
-
-    closeBtn?.addEventListener("click", close);
-    prevBtn?.addEventListener("click", prev);
-    nextBtn?.addEventListener("click", next);
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) close();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("flex")) return;
-
-      switch (e.key) {
-        case "Escape":
-          close();
-          break;
-        case "ArrowLeft":
-          prev();
-          break;
-        case "ArrowRight":
-          next();
-          break;
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        document.body.style.overflow = "hidden";
       }
-    });
-  }
 
-  document.addEventListener("astro:page-load", initLightbox);
-  initLightbox();
+      function close() {
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
+
+      function prev() {
+        currentIndex = (currentIndex - 1 + screenshotCount) % screenshotCount;
+        open(currentIndex);
+      }
+
+      function next() {
+        currentIndex = (currentIndex + 1) % screenshotCount;
+        open(currentIndex);
+      }
+
+      // Event listeners
+      items.forEach((item, index) => {
+        item.addEventListener("click", () => open(index));
+      });
+
+      closeBtn?.addEventListener("click", close);
+      prevBtn?.addEventListener("click", prev);
+      nextBtn?.addEventListener("click", next);
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) close();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("flex")) return;
+
+        switch (e.key) {
+          case "Escape":
+            close();
+            break;
+          case "ArrowLeft":
+            prev();
+            break;
+          case "ArrowRight":
+            next();
+            break;
+        }
+      });
+    }
+
+    // Initialize on page load and navigation
+    document.addEventListener("astro:page-load", initLightbox);
+    initLightbox();
+  })();
 </script>

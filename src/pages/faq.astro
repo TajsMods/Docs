@@ -1,12 +1,12 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import FAQAccordion from "../components/FAQAccordion.astro";
-import { faq, faqCategories } from "../data/faq";
+import { faq } from "../data/faq";
 ---
 
 <SiteLayout
   title="FAQ"
-  description="Frequently asked questions about Taj's Mod for Upload Labs. Find answers to common installation, troubleshooting, and feature questions."
+  description="Frequently asked questions about Taj's Mods for Upload Labs. Find answers to common installation, troubleshooting, and feature questions."
 >
   <section class="py-16 md:py-20 relative overflow-hidden border-b border-white/5">
     <div class="container-wide text-center relative z-10">
@@ -19,16 +19,16 @@ import { faq, faqCategories } from "../data/faq";
   </section>
 
   <!-- FAQ Content -->
-  <section class="section">
+  <section class="section relative z-10">
     <div class="container-narrow">
       <FAQAccordion items={faq} showSearch={true} />
 
       <!-- Still need help? -->
       <div
-        class="mt-16 text-center p-8 bg-gray-100 dark:bg-dark-800 rounded-2xl"
+        class="mt-16 text-center p-10 glass-card rounded-2xl border border-white/10"
       >
-        <h3 class="text-xl font-semibold mb-4">Still have questions?</h3>
-        <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
+        <h3 class="text-xl font-bold mb-4 text-white uppercase tracking-widest font-mono">Still have questions?</h3>
+        <p class="text-gray-400 mb-8 max-w-md mx-auto text-sm">
           Can't find what you're looking for? Reach out to the community or
           report an issue.
         </p>
@@ -39,7 +39,7 @@ import { faq, faqCategories } from "../data/faq";
             href="https://discord.gg/enigmadev"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-secondary"
+            class="btn-secondary w-full sm:w-auto"
           >
             <span>💬</span>
             Ask on Discord
@@ -48,7 +48,7 @@ import { faq, faqCategories } from "../data/faq";
             href="https://github.com/TajsMods/Core/issues/new"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-secondary"
+            class="btn-secondary w-full sm:w-auto"
           >
             <span>🐛</span>
             Report an Issue

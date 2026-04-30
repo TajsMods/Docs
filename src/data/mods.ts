@@ -125,25 +125,20 @@ export const mods: Mod[] = [
   {
     slug: 'tajs-mod',
     name: "Taj's Mod (Legacy Bundle)",
-    shortDescription: 'The original all-in-one collection of Utility / QoL + Visual Tweaks. Now superseded by the modular TajsMods ecosystem.',
-    longDescription: `Taj's Mod is the original comprehensive quality-of-life enhancement mod for Upload Labs. It provided a wide range of features designed to improve your gameplay experience.
+    shortDescription: 'The original all-in-one bundle containing Utility, QoL, and Visual Tweaks. Now superseded by the modular TajsMods ecosystem.',
+    longDescription: `Taj's Mod was the original comprehensive quality-of-life enhancement mod for Upload Labs. It provided a wide range of features in a single package.
 
-**Note:** This monolithic version is now considered legacy. Users are encouraged to switch to the modular versions (Core, QoL, etc.) for better compatibility and frequent updates.`,
+**Note:** This monolithic version is now deprecated. Users should switch to the modular versions (Core, QoL, Command Palette, Cheats) for better compatibility, more frequent updates, and less performance overhead.`,
     status: 'stable',
-    tags: ['Legacy', 'QoL', 'UI', 'Utility'],
+    tags: ['Legacy', 'Bundle'],
     links: [
       { type: 'steam', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=3628222709', label: 'Steam Workshop' },
-      { type: 'github', url: 'https://github.com/TajemnikTV/TajsMod', label: 'Legacy Repo' },
-      { type: 'issues', url: 'https://github.com/TajemnikTV/TajsMod/issues', label: 'Report Issues' },
+      { type: 'github', url: 'https://github.com/TajemnikTV/TajsMod', label: 'Legacy Repository' },
     ],
     version: '0.6.1',
     updatedAt: '2026-01-16',
     heroImage: 'brand/TajsModHeader.png',
     logo: 'brand/TajsModLogo.png',
-    screenshots: [
-      '/screenshots/command-palette.png',
-      '/screenshots/settings-panel.png',
-    ],
     featured: false,
     game: 'Upload Labs',
   },

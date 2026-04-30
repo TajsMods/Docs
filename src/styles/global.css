@@ -11,7 +11,7 @@
     color: #e2e8f0;
   }
 
-  /* Dark mode is always on for this cosmic design */
+  /* Dark mode is always on for this Modding Lab design */
   html.dark {
     color-scheme: dark;
   }
@@ -20,15 +20,6 @@
     @apply transition-colors duration-200;
   }
 
-  /* Glass panel effect - for navigation and floating elements */
-  .glass-panel {
-    background: rgba(30, 32, 45, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  }
-  
   /* Glass card effect - for content cards */
   .glass-card {
     background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
@@ -67,38 +58,6 @@
            transition-all duration-200 ease-out
            focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2
            focus:ring-offset-bg-dark;
-  }
-
-  /* Legacy card styles (updated for new design) */
-  .card {
-    background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    @apply rounded-2xl p-6;
-  }
-
-  .card-interactive {
-    background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    @apply rounded-2xl p-6 cursor-pointer hover:bg-white/5 transition-all duration-300;
-  }
-
-  .card-interactive:hover {
-    border-color: rgba(0, 219, 233, 0.5);
-  }
-
-  /* Glass utility class (updated) */
-  .glass {
-    background: rgba(30, 32, 45, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
 
   .section {
@@ -172,46 +131,6 @@
     @apply bg-yellow-500/20 text-yellow-500 border-yellow-500/30;
   }
 
-  .animate-in {
-    animation: animateIn 0.5s ease-out forwards;
-  }
-
-  @keyframes animateIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .stagger-1 {
-    animation-delay: 0.1s;
-  }
-  .stagger-2 {
-    animation-delay: 0.2s;
-  }
-  .stagger-3 {
-    animation-delay: 0.3s;
-  }
-  .stagger-4 {
-    animation-delay: 0.4s;
-  }
-  .stagger-5 {
-    animation-delay: 0.5s;
-  }
-
-  /* Star background effect */
-  .star-bg {
-    background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
-    background-size: 550px 550px, 350px 350px, 250px 250px;
-    background-position: 0 0, 40px 60px, 130px 270px;
-  }
 /* Code blocks with copy button */
 pre {
   position: relative;

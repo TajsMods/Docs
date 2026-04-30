@@ -1,31 +1,32 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { siteConfig } from "../../config/site";
+import { sitePath } from "../../utils/urls";
 
 // Documentation sections linking to Starlight docs at /docs/
 const docSections = [
   {
     title: "Core API",
     description: "Core API documentation for developers",
-    href: `${import.meta.env.BASE_URL}docs/Core/API/`,
+    href: sitePath('/docs/core/api/'),
     icon: "📖",
   },
   {
     title: "Keybinds API",
     description: "Keybinds Manager API reference",
-    href: `${import.meta.env.BASE_URL}docs/Core/keybinds_api/`,
+    href: sitePath('/docs/core/keybinds_api/'),
     icon: "⌨️",
   },
   {
     title: "Module Guide",
     description: "Guide for creating new modules",
-    href: `${import.meta.env.BASE_URL}docs/Core/MODULE_GUIDE/`,
+    href: sitePath('/docs/core/module_guide/'),
     icon: "🏗️",
   },
   {
     title: "Settings & Migrations",
     description: "Settings and migrations guide",
-    href: `${import.meta.env.BASE_URL}docs/Core/SETTINGS_AND_MIGRATIONS/`,
+    href: sitePath('/docs/core/settings_and_migrations/'),
     icon: "⚙️",
   },
 ];
@@ -55,7 +56,7 @@ const docSections = [
             <div>
               <h2 class="text-xl font-semibold mb-2 text-white">Quick Start</h2>
               <p class="text-gray-400 mb-4">
-                New to Taj's Mod? Getting started takes less than a minute.
+                Getting started with Taj's Mods is quick and easy.
               </p>
               <ol class="list-decimal list-inside space-y-2 text-gray-300 mb-4">
                 <li>
@@ -63,23 +64,22 @@ const docSections = [
                     href={siteConfig.steamWorkshop}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-primary hover:text-primary-hover underline"
+                    class="text-surface-tint hover:underline"
                     >Steam Workshop</a
                   >
                 </li>
                 <li>
-                  <strong>Launch</strong> Upload Labs - the mod loads automatically
+                  <strong>Launch</strong> Upload Labs — the modules load automatically
                 </li>
                 <li>
-                  <strong>Open settings</strong> via the puzzle piece icon (⚙️) in-game
+                  <strong>Configure</strong> in-game via the modular settings panel
                 </li>
                 <li>
-                  <strong>Use Command Palette</strong> with MMB or Spacebar for quick
-                  actions
+                  <strong>Search</strong> using the Command Palette (if installed)
                 </li>
               </ol>
               <a
-                href={`${import.meta.env.BASE_URL}faq/`}
+                href={sitePath('/faq/')}
                 class="btn-secondary text-sm"
               >
                 Having issues? Check the FAQ
@@ -99,10 +99,10 @@ const docSections = [
       >
         {
           docSections.map((doc) => (
-            <a href={doc.href} class="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors group block">
+            <a href={doc.href} class="glass-card p-6 rounded-xl border border-white/5 hover:border-surface-tint/30 transition-colors group block">
               <div class="flex items-center gap-4 mb-3">
                 <span class="text-3xl">{doc.icon}</span>
-                <h3 class="text-xl font-semibold text-white group-hover:text-primary transition-colors">{doc.title}</h3>
+                <h3 class="text-xl font-semibold text-white group-hover:text-surface-tint transition-colors">{doc.title}</h3>
               </div>
               <p class="text-gray-400 text-sm">{doc.description}</p>
             </a>
@@ -116,8 +116,8 @@ const docSections = [
           Looking for more detailed technical documentation?
         </p>
         <a
-          href={`${import.meta.env.BASE_URL}docs/`}
-          class="btn-glow inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white px-6 py-3 rounded-lg font-semibold"
+          href={sitePath('/docs/')}
+          class="btn-primary"
         >
           <span>📚</span>
           Browse Full Documentation

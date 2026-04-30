@@ -4,7 +4,7 @@
  */
 import { roadmap as localRoadmap, type RoadmapItem } from './roadmap';
 
-const GITHUB_REPO = import.meta.env.PUBLIC_GITHUB_REPO || 'TajemnikTV/TajsMod';
+const GITHUB_REPO = import.meta.env.PUBLIC_GITHUB_REPO || 'TajsMods/Core';
 const GITHUB_TOKEN = import.meta.env.GITHUB_TOKEN || '';
 const ROADMAP_LABEL = import.meta.env.PUBLIC_ROADMAP_LABEL || 'roadmap';
 

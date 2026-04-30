@@ -5,7 +5,7 @@ import { siteConfig } from "../config/site";
 
 <SiteLayout
   title="Support"
-  description="Support Taj's Mod development. Learn about ways to contribute, report issues, and help the project grow."
+  description="Support Taj's Mods development. Learn about ways to contribute, report issues, and help the project grow."
 >
   <section class="py-16 md:py-20 relative overflow-hidden border-b border-white/5">
     <div class="container-wide text-center relative z-10">
@@ -18,24 +18,24 @@ import { siteConfig } from "../config/site";
   </section>
 
   <!-- Main Content -->
-  <section class="section">
+  <section class="section relative z-10">
     <div class="container-narrow">
       <!-- Transparency Notice -->
       <div
-        class="card bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 mb-12"
+        class="glass-card bg-emerald-500/5 border-emerald-500/20 mb-12 p-8 rounded-2xl"
       >
         <div class="flex items-start gap-4">
           <div class="text-3xl">🔒</div>
           <div>
             <h2
-              class="text-xl font-semibold mb-2 text-green-900 dark:text-green-100"
+              class="text-xl font-semibold mb-2 text-emerald-300"
             >
               Full Transparency
             </h2>
-            <p class="text-green-800 dark:text-green-200">
-              Taj's Mod is completely free and will always remain so. There are
+            <p class="text-gray-300">
+              Taj's Mods ecosystem is completely free and open source. There are
               no hidden paywalls, no locked features, and no "premium" tiers.
-              All gameplay-affecting features are clearly labeled as opt-in.
+              All gameplay-affecting features are clearly labeled and optional.
               Your tokens and progression are never touched without explicit
               action from you.
             </p>
@@ -44,14 +44,14 @@ import { siteConfig } from "../config/site";
       </div>
 
       <!-- Ways to Support -->
-      <h2 class="text-2xl font-bold mb-8 text-center">Ways to Support</h2>
+      <h2 class="text-2xl font-bold mb-8 text-center text-white">Ways to Support</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-        <div class="card">
+        <div class="glass-card rounded-2xl p-6">
           <div class="text-3xl mb-4">⭐</div>
-          <h3 class="font-semibold text-lg mb-2">Rate on Workshop</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
-            A positive rating helps others discover the mod. It takes just a
+          <h3 class="font-semibold text-lg mb-2 text-white">Rate on Workshop</h3>
+          <p class="text-gray-400 text-sm mb-6">
+            A positive rating helps others discover the mods. It takes just a
             second and makes a big difference.
           </p>
           <a
@@ -64,10 +64,10 @@ import { siteConfig } from "../config/site";
           </a>
         </div>
 
-        <div class="card">
+        <div class="glass-card rounded-2xl p-6">
           <div class="text-3xl mb-4">🐛</div>
-          <h3 class="font-semibold text-lg mb-2">Report Bugs</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+          <h3 class="font-semibold text-lg mb-2 text-white">Report Bugs</h3>
+          <p class="text-gray-400 text-sm mb-6">
             Found something broken? Report it on GitHub so it can be fixed in
             the next update.
           </p>
@@ -81,10 +81,10 @@ import { siteConfig } from "../config/site";
           </a>
         </div>
 
-        <div class="card">
+        <div class="glass-card rounded-2xl p-6">
           <div class="text-3xl mb-4">💡</div>
-          <h3 class="font-semibold text-lg mb-2">Suggest Features</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+          <h3 class="font-semibold text-lg mb-2 text-white">Suggest Features</h3>
+          <p class="text-gray-400 text-sm mb-6">
             Have an idea for a new feature? Many current features came from
             community suggestions!
           </p>
@@ -98,10 +98,10 @@ import { siteConfig } from "../config/site";
           </a>
         </div>
 
-        <div class="card">
+        <div class="glass-card rounded-2xl p-6">
           <div class="text-3xl mb-4">🧪</div>
-          <h3 class="font-semibold text-lg mb-2">Beta Testing</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+          <h3 class="font-semibold text-lg mb-2 text-white">Beta Testing</h3>
+          <p class="text-gray-400 text-sm mb-6">
             Help test new features before they're released. Join the Discord to
             get notified about beta builds.
           </p>
@@ -115,10 +115,10 @@ import { siteConfig } from "../config/site";
           </a>
         </div>
 
-        <div class="card">
+        <div class="glass-card rounded-2xl p-6">
           <div class="text-3xl mb-4">💻</div>
-          <h3 class="font-semibold text-lg mb-2">Contribute Code</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+          <h3 class="font-semibold text-lg mb-2 text-white">Contribute Code</h3>
+          <p class="text-gray-400 text-sm mb-6">
             Know GDScript? Pull requests are welcome! Check the contributing
             guidelines on GitHub.
           </p>
@@ -132,11 +132,11 @@ import { siteConfig } from "../config/site";
           </a>
         </div>
 
-        <div class="card">
+        <div class="glass-card rounded-2xl p-6">
           <div class="text-3xl mb-4">📣</div>
-          <h3 class="font-semibold text-lg mb-2">Spread the Word</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
-            Tell other Upload Labs players about the mod. Word of mouth is the
+          <h3 class="font-semibold text-lg mb-2 text-white">Spread the Word</h3>
+          <p class="text-gray-400 text-sm mb-6">
+            Tell other Upload Labs players about the project. Word of mouth is the
             best advertising.
           </p>
           <a
@@ -151,14 +151,13 @@ import { siteConfig } from "../config/site";
       </div>
 
       <!-- Why Support? -->
-      <div class="bg-gray-100 dark:bg-dark-800 rounded-2xl p-8 text-center">
-        <h3 class="text-xl font-semibold mb-4">Why Support Matters</h3>
-        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+      <div class="glass-card rounded-2xl p-8 text-center bg-white/5 border border-white/10">
+        <h3 class="text-xl font-semibold mb-4 text-white uppercase tracking-wider">Operational Directive</h3>
+        <p class="text-gray-400 max-w-2xl mx-auto">
           Every bit of support — whether it's a bug report, a feature
           suggestion, or just a kind word — helps motivate continued
-          development. This mod started as a personal project and grew into
-          something the community uses and enjoys. Your feedback shapes what
-          comes next.
+          development. This project started as a small personal mod and grew into
+          a modular ecosystem. Your feedback shapes what comes next.
         </p>
       </div>
     </div>

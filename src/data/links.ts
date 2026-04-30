@@ -19,9 +19,9 @@ export const links: ExternalLink[] = [
   {
     id: 'github',
     name: 'GitHub',
-    url: 'https://github.com/TajemnikTV/TajsMod',
+    url: 'https://github.com/TajsMods',
     icon: '💻',
-    description: 'Source code and issue tracker',
+    description: 'Source code and organization',
     primary: true,
   },
   {
@@ -48,7 +48,7 @@ export const links: ExternalLink[] = [
   {
     id: 'issues',
     name: 'Report an Issue',
-    url: 'https://github.com/TajemnikTV/TajsMod/issues/new',
+    url: 'https://github.com/TajsMods/Core/issues/new',
     icon: '🐛',
     description: 'Report bugs or request features',
   },

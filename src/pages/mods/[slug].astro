@@ -1,15 +1,11 @@
 ---
-/**
- * Mod Detail Page - /mods/[slug]
- * Displays detailed information about a specific mod
- * Design inspired by cyber-tech aesthetic
- */
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import {
   mods,
   getRelatedMods,
   statusConfig,
 } from "../../data/mods";
+import { sitePath } from "../../utils/urls";
 
 // Generate static paths for all mods
 export function getStaticPaths() {
@@ -34,7 +30,7 @@ const discordLink = mod.links.find((l) => l.type === "discord");
 const tagColorMap: Record<string, string> = {
   QoL: "bg-blue-500/10 text-blue-300 border-blue-500/20",
   UI: "bg-purple-500/10 text-purple-300 border-purple-500/20",
-  Utility: "bg-pink-500/10 text-pink-300 border-pink-500/20",
+  Utility: "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
   Gameplay: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
   Debug: "bg-gray-500/10 text-gray-300 border-gray-500/20",
   Tools: "bg-slate-500/10 text-slate-300 border-slate-500/20",
@@ -46,12 +42,12 @@ const getTagClass = (tag: string) =>
 
 // Icon colors for related mods
 const iconColors: Record<string, string> = {
-  QoL: "bg-green-600",
+  QoL: "bg-blue-600",
   UI: "bg-purple-600",
-  Utility: "bg-indigo-600",
-  Gameplay: "bg-pink-600",
+  Utility: "bg-cyan-600",
+  Gameplay: "bg-emerald-600",
   Debug: "bg-gray-600",
-  Tools: "bg-blue-600",
+  Tools: "bg-slate-600",
 };
 ---
 
@@ -59,23 +55,23 @@ const iconColors: Record<string, string> = {
   title={mod.name}
   description={mod.shortDescription}
   image={mod.heroImage
-    ? `${import.meta.env.BASE_URL}${mod.heroImage}`
+    ? sitePath(mod.heroImage)
     : undefined}
 >
   <div class="relative z-10 pt-32 pb-20 px-4 sm:px-6 max-w-7xl mx-auto">
     <!-- Breadcrumbs -->
-    <div class="flex items-center gap-2 text-sm text-gray-400 mb-8 pl-1">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-500 mb-8 pl-1">
       <a
-        href={`${import.meta.env.BASE_URL}`}
-        class="hover:text-white transition-colors">Home</a
+        href={sitePath('/')}
+        class="hover:text-surface-tint transition-colors">Hub</a
       >
-      <span class="material-symbols-outlined text-xs">chevron_right</span>
+      <span class="text-[10px]">/</span>
       <a
-        href={`${import.meta.env.BASE_URL}mods/`}
-        class="hover:text-white transition-colors">Mods</a
+        href={sitePath('/mods/')}
+        class="hover:text-surface-tint transition-colors">Modules</a
       >
-      <span class="material-symbols-outlined text-xs">chevron_right</span>
-      <span class="text-white font-medium">{mod.name}</span>
+      <span class="text-[10px]">/</span>
+      <span class="text-white font-medium">{mod.slug}</span>
     </div>
 
     <!-- Header Card -->
@@ -94,13 +90,13 @@ const iconColors: Record<string, string> = {
           {
             mod.logo ? (
               <img
-                src={`${import.meta.env.BASE_URL}${mod.logo}`}
+                src={sitePath(mod.logo)}
                 alt={`${mod.name} logo`}
                 class="w-32 h-32 rounded-2xl shadow-2xl border border-white/10"
                 loading="eager"
               />
             ) : (
-              <div class="w-32 h-32 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-2xl flex items-center justify-center border border-white/10">
+              <div class="w-32 h-32 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 shadow-2xl flex items-center justify-center border border-white/10">
                 <span class="text-4xl font-bold text-white drop-shadow-md">
                   {mod.name
                     .split(" ")
@@ -185,7 +181,7 @@ const iconColors: Record<string, string> = {
             {
               docsLink && (
                 <a
-                  href={`${import.meta.env.BASE_URL}${docsLink.url}`}
+                  href={sitePath(docsLink.url)}
                   class="btn-secondary"
                 >
                   <span class="material-symbols-outlined text-lg">description</span>
@@ -415,8 +411,8 @@ const iconColors: Record<string, string> = {
             {
               docsLink && (
                 <a
-                  href={`${import.meta.env.BASE_URL}${docsLink.url}`}
-                  class="flex items-center gap-3 text-gray-300 hover:text-primary transition-colors"
+                  href={sitePath(docsLink.url)}
+                  class="flex items-center gap-3 text-gray-300 hover:text-surface-tint transition-colors"
                 >
                   <span class="material-symbols-outlined text-sm">library_books</span>
                   <span>Documentation</span>
@@ -459,7 +455,7 @@ const iconColors: Record<string, string> = {
             {
               mod.tags.map((tag) => (
                 <a
-                  href={`${import.meta.env.BASE_URL}mods/?filter=${tag}`}
+                  href={sitePath(`/mods/?filter=${tag}`)}
                   class="px-3 py-1 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-xs text-gray-300 transition-colors cursor-pointer"
                 >
                   {tag}
@@ -498,12 +494,12 @@ const iconColors: Record<string, string> = {
           >
             {mod.screenshots.map((screenshot, index) => (
               <a
-                href={`${import.meta.env.BASE_URL}${screenshot}`}
+                href={sitePath(screenshot)}
                 target="_blank"
-                class="group relative aspect-video bg-black/40 rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-colors"
+                class="group relative aspect-video bg-black/40 rounded-xl overflow-hidden border border-white/10 hover:border-surface-tint/50 transition-colors"
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}${screenshot}`}
+                  src={sitePath(screenshot)}
                   alt={`${mod.name} screenshot ${index + 1}`}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
@@ -534,13 +530,13 @@ const iconColors: Record<string, string> = {
 
               return (
                 <a
-                  href={`${import.meta.env.BASE_URL}mods/${relatedMod.slug}/`}
+                  href={sitePath(`/mods/${relatedMod.slug}/`)}
                   class="glass-card p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer group"
                 >
                   <div class="flex gap-4">
                     {relatedMod.logo ? (
                       <img
-                        src={`${import.meta.env.BASE_URL}${relatedMod.logo}`}
+                        src={sitePath(relatedMod.logo)}
                         alt={`${relatedMod.name} logo`}
                         class="w-16 h-16 rounded-lg object-cover flex-shrink-0 group-hover:scale-105 transition-transform"
                         loading="lazy"
@@ -563,7 +559,7 @@ const iconColors: Record<string, string> = {
                       </div>
                     )}
                     <div class="min-w-0">
-                      <h4 class="font-bold text-white group-hover:text-primary transition-colors truncate">
+                      <h4 class="font-bold text-white group-hover:text-surface-tint transition-colors truncate">
                         {relatedMod.name}
                         {relatedMod.status === "beta" && (
                           <span class="text-[10px] bg-yellow-500/20 text-yellow-500 px-1 rounded ml-1">
@@ -599,16 +595,6 @@ const iconColors: Record<string, string> = {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  /* Primary color for material icons */
-  .text-primary {
-    color: #ff7f36;
-  }
-
-  /* Hover primary color */
-  .hover\:text-primary:hover {
-    color: #ff7f36;
   }
 
   /* Screenshot scroll animation placeholder */

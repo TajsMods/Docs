@@ -21,19 +21,17 @@ const troubleshootingConfig = {
       logs: "~/.local/share/app_userdata/Upload Labs/logs",
     },
     mac: {
-      game: "?",
-      mods: "?",
-      config: "?",
+      game: "Unsupported",
+      mods: "Unsupported",
+      config: "Unsupported",
     },
   },
 };
-
-// const BASE_URL = import.meta.env.BASE_URL;
 ---
 
 <SiteLayout
   title="Troubleshooting"
-  description="Diagnostic checklist and common fixes for Taj's Mod issues."
+  description="Diagnostic checklist and common fixes for Taj's Mods issues."
 >
   <section class="py-16 md:py-20 relative overflow-hidden border-b border-white/5">
     <div class="container-wide text-center relative z-10">
@@ -45,109 +43,109 @@ const troubleshootingConfig = {
     <div class="absolute -top-24 -right-24 w-96 h-96 bg-surface-tint/5 rounded-full blur-[100px]"></div>
   </section>
 
-  <section class="section">
+  <section class="section relative z-10">
     <div class="container-narrow">
       <!-- Quick Diagnosis (Interactive) -->
       <div
-        class="card mb-8 bg-amber-50 dark:bg-amber-900/10 border-amber-200 dark:border-amber-800/30"
+        class="glass-card mb-12 p-8 rounded-2xl bg-amber-500/5 border-amber-500/20"
         id="diagnosis-card"
       >
-        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-amber-200 uppercase tracking-wider font-mono">
           <span>⚡</span>
-          Quick Diagnosis Checklist
+          Diagnostic Checklist
         </h2>
-        <div class="space-y-3" id="checklist">
+        <div class="space-y-4" id="checklist">
           <label
-            class="flex items-start gap-3 cursor-pointer"
+            class="flex items-start gap-3 cursor-pointer group"
             data-check="subscribed"
           >
             <input
               type="checkbox"
-              class="diagnosis-check mt-1 h-4 w-4 rounded border-gray-300 accent-accent-500"
+              class="diagnosis-check mt-1 h-4 w-4 rounded border-white/10 bg-white/5 text-surface-tint focus:ring-surface-tint"
             />
-            <span>Is the mod subscribed on Steam Workshop?</span>
+            <span class="text-gray-300 group-hover:text-white transition-colors">Is the mod subscribed on Steam Workshop?</span>
           </label>
           <label
-            class="flex items-start gap-3 cursor-pointer"
+            class="flex items-start gap-3 cursor-pointer group"
             data-check="launched"
           >
             <input
               type="checkbox"
-              class="diagnosis-check mt-1 h-4 w-4 rounded border-gray-300 accent-accent-500"
+              class="diagnosis-check mt-1 h-4 w-4 rounded border-white/10 bg-white/5 text-surface-tint focus:ring-surface-tint"
             />
-            <span>Have you launched the game after subscribing?</span>
+            <span class="text-gray-300 group-hover:text-white transition-colors">Have you launched the game after subscribing?</span>
           </label>
           <label
-            class="flex items-start gap-3 cursor-pointer"
+            class="flex items-start gap-3 cursor-pointer group"
             data-check="sync"
           >
             <input
               type="checkbox"
-              class="diagnosis-check mt-1 h-4 w-4 rounded border-gray-300 accent-accent-500"
+              class="diagnosis-check mt-1 h-4 w-4 rounded border-white/10 bg-white/5 text-surface-tint focus:ring-surface-tint"
             />
-            <span>Is Steam Workshop sync enabled?</span>
+            <span class="text-gray-300 group-hover:text-white transition-colors">Is Steam Workshop sync enabled?</span>
           </label>
           <label
-            class="flex items-start gap-3 cursor-pointer"
+            class="flex items-start gap-3 cursor-pointer group"
             data-check="conflict"
           >
             <input
               type="checkbox"
-              class="diagnosis-check mt-1 h-4 w-4 rounded border-gray-300 accent-accent-500"
+              class="diagnosis-check mt-1 h-4 w-4 rounded border-white/10 bg-white/5 text-surface-tint focus:ring-surface-tint"
             />
-            <span>Are other mods disabled (to test conflict)?</span>
+            <span class="text-gray-300 group-hover:text-white transition-colors">Are other mods disabled (to test conflict)??</span>
           </label>
           <label
-            class="flex items-start gap-3 cursor-pointer"
+            class="flex items-start gap-3 cursor-pointer group"
             data-check="resub"
           >
             <input
               type="checkbox"
-              class="diagnosis-check mt-1 h-4 w-4 rounded border-gray-300 accent-accent-500"
+              class="diagnosis-check mt-1 h-4 w-4 rounded border-white/10 bg-white/5 text-surface-tint focus:ring-surface-tint"
             />
-            <span>Have you tried unsubscribing and resubscribing?</span>
+            <span class="text-gray-300 group-hover:text-white transition-colors">Have you tried unsubscribing and resubscribing?</span>
           </label>
         </div>
 
         <!-- Dynamic Guidance -->
-        <div id="diagnosis-result" class="mt-6 hidden">
+        <div id="diagnosis-result" class="mt-8 hidden space-y-4">
           <div
             id="guidance-subscribed"
-            class="hidden p-4 rounded-lg bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-800 mb-3"
+            class="hidden p-5 rounded-xl bg-red-500/10 border border-red-500/30"
           >
-            <h4 class="font-semibold text-red-700 dark:text-red-400 mb-2">
-              🔴 Subscribe to the mod first!
+            <h4 class="font-bold text-red-400 mb-2 uppercase text-xs tracking-widest font-mono">
+              CRITICAL: Subscription Required
             </h4>
-            <p class="text-red-600 dark:text-red-300 text-sm">
+            <p class="text-gray-300 text-sm">
               Visit the <a
                 href={siteConfig.steamWorkshop}
                 target="_blank"
-                class="underline">Steam Workshop page</a
+                class="text-surface-tint hover:underline">Steam Workshop page</a
               > and click "Subscribe".
             </p>
           </div>
 
           <div
             id="guidance-launched"
-            class="hidden p-4 rounded-lg bg-yellow-100 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-800 mb-3"
+            class="hidden p-5 rounded-xl bg-yellow-500/10 border border-yellow-500/30"
           >
-            <h4 class="font-semibold text-yellow-700 dark:text-yellow-400 mb-2">
-              🟡 Restart the game
+            <h4 class="font-bold text-yellow-400 mb-2 uppercase text-xs tracking-widest font-mono">
+              WARNING: Boot Required
             </h4>
-            <p class="text-yellow-600 dark:text-yellow-300 text-sm">
+            <p class="text-gray-300 text-sm">
               Close Upload Labs completely and launch it again. Steam needs to
-              download the Workshop content.
+              download and initialize the Workshop content.
             </p>
           </div>
 
           <div
             id="guidance-sync"
-            class="hidden p-4 rounded-lg bg-yellow-100 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-800 mb-3"
+            class="hidden p-5 rounded-xl bg-yellow-500/10 border border-yellow-500/30"
           >
-            <h4 class="font-semibold text-yellow-700 dark:text-yellow-400 mb-2">
-              🟡 Check Steam Workshop settings
+            <h4 class="font-bold text-yellow-400 mb-2 uppercase text-xs tracking-widest font-mono">
+              WARNING: Sync Check
             </h4>
-            <p class="text-yellow-600 dark:text-yellow-300 text-sm">
+            <p class="text-gray-300 text-sm">
               In Steam: Right-click Upload Labs → Properties → Updates → Ensure
               "Always keep this game updated" is selected.
             </p>
@@ -155,25 +153,25 @@ const troubleshootingConfig = {
 
           <div
             id="guidance-conflict"
-            class="hidden p-4 rounded-lg bg-blue-100 dark:bg-blue-900/20 border border-blue-300 dark:border-blue-800 mb-3"
+            class="hidden p-5 rounded-xl bg-blue-500/10 border border-blue-500/30"
           >
-            <h4 class="font-semibold text-blue-700 dark:text-blue-400 mb-2">
-              🔵 Test for mod conflicts
+            <h4 class="font-bold text-blue-400 mb-2 uppercase text-xs tracking-widest font-mono">
+              INFO: Conflict Isolation
             </h4>
-            <p class="text-blue-600 dark:text-blue-300 text-sm">
-              Disable all other mods and see if Taj's Mod works alone. If it
-              does, re-enable mods one by one to find the conflict.
+            <p class="text-gray-300 text-sm">
+              Disable all other mods and see if Taj's Mods work alone. If they
+              do, re-enable mods one by one to find the conflict.
             </p>
           </div>
 
           <div
             id="guidance-resub"
-            class="hidden p-4 rounded-lg bg-blue-100 dark:bg-blue-900/20 border border-blue-300 dark:border-blue-800 mb-3"
+            class="hidden p-5 rounded-xl bg-blue-500/10 border border-blue-500/30"
           >
-            <h4 class="font-semibold text-blue-700 dark:text-blue-400 mb-2">
-              🔵 Force refresh Workshop content
+            <h4 class="font-bold text-blue-400 mb-2 uppercase text-xs tracking-widest font-mono">
+              INFO: Force Refresh
             </h4>
-            <p class="text-blue-600 dark:text-blue-300 text-sm">
+            <p class="text-gray-300 text-sm">
               Unsubscribe from the mod, restart Steam, then subscribe again.
               This forces a fresh download.
             </p>
@@ -181,20 +179,20 @@ const troubleshootingConfig = {
 
           <div
             id="guidance-all-checked"
-            class="hidden p-4 rounded-lg bg-green-100 dark:bg-green-900/20 border border-green-300 dark:border-green-800 mb-3"
+            class="hidden p-5 rounded-xl bg-green-500/10 border border-green-500/30"
           >
-            <h4 class="font-semibold text-green-700 dark:text-green-400 mb-2">
-              ✅ You've tried everything basic!
+            <h4 class="font-bold text-green-400 mb-2 uppercase text-xs tracking-widest font-mono">
+              SUCCESS: Basic Checks Complete
             </h4>
-            <p class="text-green-600 dark:text-green-300 text-sm">
+            <p class="text-gray-300 text-sm">
               If the issue persists, please report it on <a
                 href="https://github.com/TajsMods/Core/issues/new"
                 target="_blank"
-                class="underline">GitHub</a
+                class="text-surface-tint hover:underline">GitHub</a
               > or <a
                 href="https://discord.gg/enigmadev"
                 target="_blank"
-                class="underline">Discord</a
+                class="text-surface-tint hover:underline">Discord</a
               > with your log files.
             </p>
           </div>
@@ -210,11 +208,11 @@ const troubleshootingConfig = {
             const states = {
               subscribed: !(document.querySelector(
                 '[data-check="subscribed"] input'
-              ) as HTMLInputElement).checked,
-              launched: !(document.querySelector('[data-check="launched"] input') as HTMLInputElement).checked,
-              sync: !(document.querySelector('[data-check="sync"] input') as HTMLInputElement).checked,
-              conflict: !(document.querySelector('[data-check="conflict"] input') as HTMLInputElement).checked,
-              resub: !(document.querySelector('[data-check="resub"] input') as HTMLInputElement).checked,
+              ) as HTMLInputElement)?.checked,
+              launched: !(document.querySelector('[data-check="launched"] input') as HTMLInputElement)?.checked,
+              sync: !(document.querySelector('[data-check="sync"] input') as HTMLInputElement)?.checked,
+              conflict: !(document.querySelector('[data-check="conflict"] input') as HTMLInputElement)?.checked,
+              resub: !(document.querySelector('[data-check="resub"] input') as HTMLInputElement)?.checked,
             };
 
             const allChecked = Object.values(states).every((v) => !v);
@@ -261,115 +259,115 @@ const troubleshootingConfig = {
       </script>
 
       <!-- Important Paths -->
-      <div class="card mb-8">
-        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+      <div class="glass-card mb-8 p-8 rounded-2xl">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-white font-mono uppercase tracking-widest">
           <span>📂</span>
-          Important Paths (Windows)
+          Storage Nodes (Windows)
         </h2>
         <div class="space-y-4">
           {
             Object.entries(troubleshootingConfig.paths.windows).map(
               ([key, path]) => (
-                <div class="flex flex-col sm:flex-row sm:items-center gap-2">
-                  <span class="font-medium text-gray-700 dark:text-gray-300 min-w-[100px] capitalize">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-2 group">
+                  <span class="font-mono text-xs uppercase text-gray-500 min-w-[100px] tracking-tighter group-hover:text-surface-tint transition-colors">
                     {key}:
                   </span>
-                  <code class="flex-1 text-sm bg-gray-100 dark:bg-dark-700 px-3 py-1.5 rounded-lg break-all">
-                    {path}
-                  </code>
-                  <CopyButton text={path} />
+                  <div class="flex-1 flex items-center gap-2 min-w-0">
+                    <code class="flex-1 text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-gray-300 font-mono truncate hover:bg-white/10 transition-colors">
+                      {path}
+                    </code>
+                    <CopyButton text={path} />
+                  </div>
                 </div>
               )
             )
           }
         </div>
-        <details class="mt-6">
+        <details class="mt-8 border-t border-white/5 pt-6 group">
           <summary
-            class="cursor-pointer text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+            class="cursor-pointer text-xs font-mono uppercase tracking-widest text-gray-500 hover:text-white transition-colors list-none flex items-center gap-2"
           >
-            Show Linux / macOS paths
+            <span class="material-symbols-outlined text-sm group-open:rotate-90 transition-transform">chevron_right</span>
+            Alternate OS Nodes
           </summary>
           <div
-            class="mt-4 space-y-4 pl-4 border-l-2 border-gray-200 dark:border-dark-700"
+            class="mt-6 space-y-6 pl-4 border-l border-white/10"
           >
-            <h4 class="font-medium text-sm text-gray-500">Linux</h4>
-            {
-              Object.entries(troubleshootingConfig.paths.linux).map(
-                ([key, path]) => (
-                  <div class="flex flex-col sm:flex-row sm:items-center gap-2">
-                    <span class="text-gray-600 dark:text-gray-400 min-w-[80px] capitalize text-sm">
-                      {key}:
-                    </span>
-                    <code class="flex-1 text-xs bg-gray-100 dark:bg-dark-700 px-2 py-1 rounded break-all">
-                      {path}
-                    </code>
-                    <CopyButton text={path} />
-                  </div>
-                )
-              )
-            }
-            <h4 class="font-medium text-sm text-gray-500 mt-4">macOS</h4>
-            {
-              Object.entries(troubleshootingConfig.paths.mac).map(
-                ([key, path]) => (
-                  <div class="flex flex-col sm:flex-row sm:items-center gap-2">
-                    <span class="text-gray-600 dark:text-gray-400 min-w-[80px] capitalize text-sm">
-                      {key}:
-                    </span>
-                    <code class="flex-1 text-xs bg-gray-100 dark:bg-dark-700 px-2 py-1 rounded break-all">
-                      {path}
-                    </code>
-                    <CopyButton text={path} />
-                  </div>
-                )
-              )
-            }
+            <div>
+              <h4 class="font-mono text-xs uppercase tracking-tighter text-surface-tint mb-4">Linux Environment</h4>
+              <div class="space-y-3">
+                {
+                  Object.entries(troubleshootingConfig.paths.linux).map(
+                    ([key, path]) => (
+                      <div class="flex flex-col lg:flex-row lg:items-center gap-2">
+                        <span class="font-mono text-[10px] uppercase text-gray-600 min-w-[80px]">
+                          {key}:
+                        </span>
+                        <div class="flex-1 flex items-center gap-2">
+                          <code class="flex-1 text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 font-mono truncate">
+                            {path}
+                          </code>
+                          <CopyButton text={path} />
+                        </div>
+                      </div>
+                    )
+                  )
+                }
+              </div>
+            </div>
           </div>
         </details>
       </div>
 
       <!-- Common Issues -->
-      <div class="card mb-8">
-        <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+      <div class="glass-card mb-8 p-8 rounded-2xl">
+        <h2 class="text-xl font-bold mb-8 flex items-center gap-2 text-white font-mono uppercase tracking-widest">
           <span>🔧</span>
-          Common Issues
+          Resolution Protocols
         </h2>
 
-        <div class="space-y-6">
-          <div>
-            <h3 class="font-semibold mb-2">
+        <div class="space-y-8">
+          <div class="group">
+            <h3 class="font-bold text-white mb-3 flex items-center gap-2 group-hover:text-surface-tint transition-colors">
+              <span class="w-1.5 h-1.5 bg-surface-tint rounded-full"></span>
               Mod not loading after subscription
             </h3>
             <ol
-              class="list-decimal list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm"
+              class="list-decimal list-inside space-y-2 text-gray-400 text-sm pl-4"
             >
-              <li>Fully close the game and Steam</li>
-              <li>Restart Steam to force Workshop sync</li>
+              <li>Fully close the game and Steam client</li>
+              <li>Restart Steam to force Workshop sync verification</li>
               <li>Launch Upload Labs</li>
-              <li>Look for the puzzle piece icon (⚙️) in the HUD</li>
+              <li>Verify presence of the modular settings interface</li>
             </ol>
           </div>
 
-          <div>
-            <h3 class="font-semibold mb-2">Game crashes on startup</h3>
+          <div class="group">
+            <h3 class="font-bold text-white mb-3 flex items-center gap-2 group-hover:text-surface-tint transition-colors">
+              <span class="w-1.5 h-1.5 bg-surface-tint rounded-full"></span>
+              Runtime exception on startup
+            </h3>
             <ol
-              class="list-decimal list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm"
+              class="list-decimal list-inside space-y-2 text-gray-400 text-sm pl-4"
             >
-              <li>Disable all other mods first</li>
-              <li>Enable Debug Logging in mod settings (if accessible)</li>
-              <li>Check logs folder for error details</li>
-              <li>Report the issue with logs attached</li>
+              <li>Deactivate all third-party mods for isolation testing</li>
+              <li>Check `Core` module status in the log files</li>
+              <li>Verify game file integrity via Steam</li>
+              <li>Report the exception with full log stack trace</li>
             </ol>
           </div>
 
-          <div>
-            <h3 class="font-semibold mb-2">Settings not saving</h3>
+          <div class="group">
+            <h3 class="font-bold text-white mb-3 flex items-center gap-2 group-hover:text-surface-tint transition-colors">
+              <span class="w-1.5 h-1.5 bg-surface-tint rounded-full"></span>
+              Configuration persistence failure
+            </h3>
             <ol
-              class="list-decimal list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm"
+              class="list-decimal list-inside space-y-2 text-gray-400 text-sm pl-4"
             >
-              <li>Ensure the game isn't running from a read-only location</li>
-              <li>Try running as administrator once</li>
-              <li>Use "Reset All Settings" in Debug tab</li>
+              <li>Check filesystem permissions for the AppData directory</li>
+              <li>Verify the `tajs_mod_config.json` is not set to read-only</li>
+              <li>Use the "Reset All Settings" directive in the Debug terminal</li>
             </ol>
           </div>
         </div>
@@ -377,60 +375,56 @@ const troubleshootingConfig = {
 
       <!-- What to Attach -->
       <div
-        class="card bg-blue-50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-800/30"
+        class="glass-card bg-surface-tint/5 border-surface-tint/20 p-8 rounded-2xl"
       >
-        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-white font-mono uppercase tracking-widest">
           <span>📎</span>
-          When Reporting an Issue
+          Incident Report Data
         </h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
-          Help us help you! Include these when reporting:
+        <p class="text-gray-400 mb-6 text-sm">
+          To expedite resolution, please include the following diagnostic data:
         </p>
-        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-          <li class="flex items-start gap-2">
-            <span class="text-blue-500">✓</span>
-            <span><strong>Log files</strong> from the logs folder</span>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-8">
+          <li class="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
+            <span class="material-symbols-outlined text-surface-tint text-sm">check_circle</span>
+            <span class="text-gray-300"><strong>Log files</strong> from the logs directory</span>
           </li>
-          <li class="flex items-start gap-2">
-            <span class="text-blue-500">✓</span>
-            <span><strong>settings.cfg</strong> if settings-related</span>
+          <li class="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
+            <span class="material-symbols-outlined text-surface-tint text-sm">check_circle</span>
+            <span class="text-gray-300"><strong>config.json</strong> for state issues</span>
           </li>
-          <li class="flex items-start gap-2">
-            <span class="text-blue-500">✓</span>
-            <span><strong>Screenshots</strong> of the issue or error</span>
+          <li class="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
+            <span class="material-symbols-outlined text-surface-tint text-sm">check_circle</span>
+            <span class="text-gray-300"><strong>Screenshots</strong> of the error state</span>
           </li>
-          <li class="flex items-start gap-2">
-            <span class="text-blue-500">✓</span>
-            <span><strong>Steps to reproduce</strong> the problem</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-blue-500">✓</span>
-            <span><strong>Mod version</strong> (check in mod settings)</span>
+          <li class="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
+            <span class="material-symbols-outlined text-surface-tint text-sm">check_circle</span>
+            <span class="text-gray-300"><strong>Replication steps</strong> for the bug</span>
           </li>
         </ul>
 
-        <div class="mt-6 flex flex-wrap gap-3">
+        <div class="flex flex-wrap gap-4">
           <a
             href="https://github.com/TajsMods/Core/issues/new"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-primary text-sm"
+            class="btn-primary"
           >
-            Report on GitHub
+            Open GitHub Issue
           </a>
           <a
             href="https://discord.gg/enigmadev"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-secondary text-sm"
+            class="btn-secondary"
           >
-            Ask on Discord
+            Consult Discord
           </a>
         </div>
       </div>
 
       <!-- Page Actions -->
-      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-dark-700">
+      <div class="mt-16 pt-8 border-t border-white/10">
         <PageActions editPath="/troubleshooting.astro" />
       </div>
     </div>

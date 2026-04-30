@@ -8,30 +8,34 @@
 <!-- Feature Detail Modal -->
 <div
   id="feature-modal"
-  class="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4"
+  class="fixed inset-0 z-[9998] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-label="Feature details"
 >
   <div
-    class="bg-white dark:bg-dark-800 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+    class="bg-black border border-white/10 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col relative"
   >
+    <!-- Background Glow -->
+    <div class="absolute -top-24 -right-24 w-64 h-64 bg-surface-tint/10 rounded-full blur-[80px] pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-surface-tint/5 rounded-full blur-[80px] pointer-events-none"></div>
+
     <!-- Header -->
     <div
-      class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-dark-700"
+      class="flex items-center justify-between p-8 border-b border-white/5 relative z-10"
     >
-      <div class="flex items-center gap-4">
-        <span id="modal-icon" class="text-4xl"></span>
+      <div class="flex items-center gap-5">
+        <span id="modal-icon" class="text-5xl drop-shadow-lg"></span>
         <div>
-          <h2 id="modal-title" class="text-2xl font-bold"></h2>
+          <h2 id="modal-title" class="text-2xl font-bold text-white tracking-tight"></h2>
           <span
             id="modal-category"
-            class="text-sm text-gray-500 dark:text-gray-400"></span>
+            class="text-[10px] font-mono font-bold text-surface-tint uppercase tracking-widest mt-1 block"></span>
         </div>
       </div>
       <button
         id="modal-close"
-        class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-700 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+        class="p-2 rounded-full hover:bg-white/10 text-gray-500 hover:text-white transition-all"
         aria-label="Close"
       >
         <svg
@@ -50,43 +54,62 @@
     </div>
 
     <!-- Content -->
-    <div class="p-6 overflow-y-auto flex-1">
-      <p id="modal-description" class="text-gray-600 dark:text-gray-400 mb-6">
+    <div class="p-8 overflow-y-auto flex-1 relative z-10 custom-scrollbar">
+      <p id="modal-description" class="text-gray-300 text-lg leading-relaxed mb-8 italic">
       </p>
 
       <div
         id="modal-long-description"
-        class="prose dark:prose-invert max-w-none mb-6 hidden"
+        class="prose prose-invert prose-sm max-w-none mb-8 hidden"
       >
-        <p id="modal-long-text"></p>
+        <p id="modal-long-text" class="text-gray-400 leading-relaxed"></p>
       </div>
 
       <!-- Tips -->
-      <div id="modal-tips-section" class="hidden">
+      <div id="modal-tips-section" class="hidden glass-card p-6 rounded-xl border-white/5">
         <h3
-          class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3"
+          class="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-[0.2em] mb-4 flex items-center gap-2"
         >
-          💡 Tips
+          <span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+          Operational Tips
         </h3>
-        <ul id="modal-tips" class="space-y-2"></ul>
+        <ul id="modal-tips" class="space-y-3"></ul>
       </div>
 
       <!-- Tags -->
-      <div class="mt-6 pt-6 border-t border-gray-200 dark:border-dark-700">
+      <div class="mt-8 pt-8 border-t border-white/5">
         <div id="modal-tags" class="flex flex-wrap gap-2"></div>
       </div>
     </div>
 
     <!-- Footer -->
     <div
-      class="p-6 border-t border-gray-200 dark:border-dark-700 bg-gray-50 dark:bg-dark-700/30"
+      class="p-8 border-t border-white/5 bg-white/[0.02] relative z-10"
     >
-      <div class="flex justify-end gap-3">
-        <button id="modal-close-btn" class="btn-secondary"> Close </button>
+      <div class="flex justify-end gap-4">
+        <button id="modal-close-btn" class="btn-secondary w-full sm:w-auto">
+          Deactivate Overlay
+        </button>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+</style>
 
 <script>
   interface FeatureData {
@@ -130,7 +153,7 @@
       if (iconEl) iconEl.textContent = data.icon;
       if (titleEl) titleEl.textContent = data.title;
       if (categoryEl)
-        categoryEl.textContent = `${data.categoryIcon} ${data.category}`;
+        categoryEl.textContent = `${data.categoryIcon} ${data.category.toUpperCase()}`;
       if (descEl) descEl.textContent = data.description;
 
       // Long description
@@ -147,9 +170,9 @@
         tipsList.innerHTML = data.tips
           .map(
             (tip) =>
-              `<li class="flex items-start gap-2 text-gray-600 dark:text-gray-400">
-            <span class="text-accent-500">•</span>
-            <span>${tip}</span>
+              `<li class="flex items-start gap-3 text-gray-400 text-sm">
+            <span class="text-surface-tint mt-1 leading-none text-xs">◆</span>
+            <span class="leading-relaxed">${tip}</span>
           </li>`
           )
           .join("");
@@ -162,7 +185,7 @@
         tagsEl.innerHTML = data.tags
           .map(
             (tag) =>
-              `<span class="px-2 py-1 bg-gray-100 dark:bg-dark-700 text-gray-600 dark:text-gray-400 rounded-full text-xs">${tag}</span>`
+              `<span class="px-3 py-1 bg-white/5 border border-white/10 text-gray-400 rounded-lg text-[10px] font-mono uppercase tracking-widest">${tag}</span>`
           )
           .join("");
       }

@@ -7,11 +7,11 @@ interface Props {
   githubRepo?: string;
 }
 
-const { editPath, githubRepo = "TajemnikTV/TajsMod" } = Astro.props;
+const { editPath, githubRepo = "TajsMods/tajsmods.github.io" } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const editUrl = editPath
-  ? `https://github.com/${githubRepo}/edit/main/docs/src/pages${editPath}`
+  ? `https://github.com/${githubRepo}/edit/main/src/pages${editPath}`
   : null;
 const issueUrl = `https://github.com/${githubRepo}/issues/new?title=Feedback%20for%20${encodeURIComponent(currentPath)}&body=%0A%0A---%0APage:%20${encodeURIComponent(currentPath)}`;
 ---
