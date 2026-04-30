@@ -54,21 +54,6 @@ export default {
         "error": "#ffb4ab",
         "accent-purple": "#8b5cf6",
         
-        // Accent colors (keeping for backwards compatibility)
-        accent: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316', // Primary orange
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
-          950: '#431407',
-        },
-        
         // Background colors from the new design
         'bg-dark': '#0f111a', // Deep dark blue/black
         'bg-panel': 'rgba(30, 32, 45, 0.6)',
@@ -86,21 +71,6 @@ export default {
           cyan: '#06b6d4',   // Cyber cyan
           indigo: '#6366f1', // Indigo
         },
-        
-        // Dark theme backgrounds (updated for new design)
-        dark: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#0f111a', // Updated to match new design
-        },
       },
       backgroundImage: {
          'glass-gradient': 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
@@ -110,21 +80,12 @@ export default {
          'hero-glow': 'radial-gradient(ellipse at center, rgba(0, 219, 233, 0.15) 0%, transparent 60%)',
       },
       fontFamily: {
-        "headline": [
-                "Space Grotesk"
-        ],
-        "display": [
-                "Space Grotesk"
-        ],
-        "body": [
-                "Inter"
-        ],
-        "label": [
-                "Space Grotesk"
-        ]
-,
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        display: ['Inter', 'sans-serif'],
+        "headline": ["Space Grotesk"],
+        "display": ["Space Grotesk"],
+        "body": ["Inter"],
+        "label": ["Space Grotesk"],
+        "sans": ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        "mono": ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
@@ -162,11 +123,9 @@ export default {
         "DEFAULT": "0.5rem",
         "lg": "1rem",
         "xl": "1.5rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
         "full": "9999px"
-,
-        'xl': '1rem',
-        '2xl': '1.5rem',
-        '3xl': '2rem',
       },
     },
   },

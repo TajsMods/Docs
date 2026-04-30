@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import LinkCard from "../../components/LinkCard.astro";
 
 // Documentation sections linking to Starlight docs at /docs/
 const docSections = [
@@ -101,12 +100,13 @@ const docSections = [
       >
         {
           docSections.map((doc) => (
-            <LinkCard
-              title={doc.title}
-              description={doc.description}
-              href={doc.href}
-              icon={doc.icon}
-            />
+            <a href={doc.href} class="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors group block">
+              <div class="flex items-center gap-4 mb-3">
+                <span class="text-3xl">{doc.icon}</span>
+                <h3 class="text-xl font-semibold text-white group-hover:text-primary transition-colors">{doc.title}</h3>
+              </div>
+              <p class="text-gray-400 text-sm">{doc.description}</p>
+            </a>
           ))
         }
       </div>

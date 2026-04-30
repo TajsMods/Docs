@@ -1,5 +1,6 @@
 ---
 // LabHero.astro
+import { siteConfig } from "../config/site";
 ---
 <section class="max-w-[1440px] mx-auto px-8 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 <div class="space-y-8">
@@ -15,12 +16,12 @@
                     A suite of highly technical, modular modifications designed to extend functionality and streamline diagnostics within the core engine environment. Built for stability and performance.
                 </p>
 <div class="flex items-center gap-4 pt-4">
-<button class="px-6 py-3 bg-surface-tint text-on-primary font-headline font-semibold rounded hover:bg-primary-fixed transition-colors shadow-[0_0_15px_rgba(0,219,233,0.2)]">
+<a href={siteConfig.githubReleases} class="px-6 py-3 bg-surface-tint text-on-primary font-headline font-semibold rounded hover:bg-primary-fixed transition-colors shadow-[0_0_15px_rgba(0,219,233,0.2)]">
                         Download Core
-                    </button>
-<button class="px-6 py-3 border border-outline-variant text-on-surface font-headline font-semibold rounded hover:bg-surface-container-high transition-colors">
+                    </a>
+<a href={siteConfig.docs} class="px-6 py-3 border border-outline-variant text-on-surface font-headline font-semibold rounded hover:bg-surface-container-high transition-colors">
                         View Documentation
-                    </button>
+                    </a>
 </div>
 </div>
 <!-- Console Preview -->

@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import { siteConfig } from "../config/site";
 
 interface Props {
   title: string;
@@ -46,15 +47,15 @@ const { title } = Astro.props;
           <a class="text-slate-400 hover:text-cyan-200 transition-colors" href="/changelog">Changelog</a>
         </nav>
         <div class="flex items-center gap-6 text-on-surface-variant font-headline text-sm tracking-wide">
-          <a class="flex items-center gap-2 hover:text-primary-fixed transition-colors" href="#">
+          <a class="flex items-center gap-2 hover:text-primary-fixed transition-colors" href={siteConfig.githubOrg}>
             <span class="material-symbols-outlined text-[20px]">code</span>
             <span class="hidden lg:inline">GitHub</span>
           </a>
-          <a class="flex items-center gap-2 hover:text-primary-fixed transition-colors" href="#">
+          <a class="flex items-center gap-2 hover:text-primary-fixed transition-colors" href={siteConfig.steamWorkshop}>
             <span class="material-symbols-outlined text-[20px]">sports_esports</span>
             <span class="hidden lg:inline">Steam Workshop</span>
           </a>
-          <a class="flex items-center gap-2 hover:text-primary-fixed transition-colors" href="#">
+          <a class="flex items-center gap-2 hover:text-primary-fixed transition-colors" href={siteConfig.discord}>
             <span class="material-symbols-outlined text-[20px]">forum</span>
             <span class="hidden lg:inline">Discord</span>
           </a>
@@ -73,10 +74,10 @@ const { title } = Astro.props;
           © 2024 Taj's Mods. Licensed under MIT.
         </div>
         <nav class="flex gap-8 font-['Inter'] text-sm uppercase tracking-widest">
-          <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href="#">GitHub Releases</a>
-          <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href="#">Steam Workshop</a>
-          <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href="#">Discord</a>
-          <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href="#">Documentation</a>
+          <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href={siteConfig.githubReleases}>GitHub Releases</a>
+          <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href={siteConfig.steamWorkshop}>Steam Workshop</a>
+          <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href={siteConfig.discord}>Discord</a>
+          <a class="text-on-surface-variant hover:text-primary-fixed hover:underline decoration-surface-tint/50 transition-colors" href={siteConfig.docs}>Documentation</a>
         </nav>
       </div>
     </footer>

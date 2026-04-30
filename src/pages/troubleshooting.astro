@@ -27,7 +27,7 @@ const troubleshootingConfig = {
   },
 };
 
-const BASE_URL = import.meta.env.BASE_URL;
+// const BASE_URL = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
@@ -209,50 +209,46 @@ const BASE_URL = import.meta.env.BASE_URL;
 
           function updateGuidance() {
             const states = {
-              subscribed: !document.querySelector(
+              subscribed: !(document.querySelector(
                 '[data-check="subscribed"] input'
-              ).checked,
-              launched: !document.querySelector('[data-check="launched"] input')
-                .checked,
-              sync: !document.querySelector('[data-check="sync"] input')
-                .checked,
-              conflict: !document.querySelector('[data-check="conflict"] input')
-                .checked,
-              resub: !document.querySelector('[data-check="resub"] input')
-                .checked,
+              ) as HTMLInputElement).checked,
+              launched: !(document.querySelector('[data-check="launched"] input') as HTMLInputElement).checked,
+              sync: !(document.querySelector('[data-check="sync"] input') as HTMLInputElement).checked,
+              conflict: !(document.querySelector('[data-check="conflict"] input') as HTMLInputElement).checked,
+              resub: !(document.querySelector('[data-check="resub"] input') as HTMLInputElement).checked,
             };
 
             const allChecked = Object.values(states).every((v) => !v);
             const anyUnchecked = Object.values(states).some((v) => v);
 
             // Show result section if any state applies
-            resultDiv.classList.toggle("hidden", !anyUnchecked && !allChecked);
+            resultDiv?.classList.toggle("hidden", !anyUnchecked && !allChecked);
 
             // Toggle individual guidance boxes
             document
               .getElementById("guidance-subscribed")
-              .classList.toggle("hidden", !states.subscribed);
+              ?.classList.toggle("hidden", !states.subscribed);
             document
               .getElementById("guidance-launched")
-              .classList.toggle(
+              ?.classList.toggle(
                 "hidden",
                 states.subscribed || !states.launched
               );
             document
               .getElementById("guidance-sync")
-              .classList.toggle(
+              ?.classList.toggle(
                 "hidden",
                 states.subscribed || states.launched || !states.sync
               );
             document
               .getElementById("guidance-conflict")
-              .classList.toggle("hidden", !states.conflict);
+              ?.classList.toggle("hidden", !states.conflict);
             document
               .getElementById("guidance-resub")
-              .classList.toggle("hidden", !states.resub);
+              ?.classList.toggle("hidden", !states.resub);
             document
               .getElementById("guidance-all-checked")
-              .classList.toggle("hidden", !allChecked);
+              ?.classList.toggle("hidden", !allChecked);
           }
 
           checks.forEach((check) =>
