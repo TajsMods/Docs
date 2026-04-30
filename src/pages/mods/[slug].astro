@@ -344,6 +344,30 @@ const iconColors: Record<string, string> = {
               </span>
             </div>
             {
+              mod.role && (
+                <div class="flex justify-between items-center pb-2 border-b border-white/5">
+                  <span class="text-gray-400">Role</span>
+                  <span class="text-white font-medium capitalize">{mod.role}</span>
+                </div>
+              )
+            }
+            {
+              mod.recommended !== undefined && (
+                <div class="flex justify-between items-center pb-2 border-b border-white/5">
+                  <span class="text-gray-400">Recommended</span>
+                  <span class="text-white font-medium">{mod.recommended ? "Yes" : "No"}</span>
+                </div>
+              )
+            }
+            {
+              mod.requires && mod.requires.length > 0 && (
+                <div class="flex justify-between items-start pb-2 border-b border-white/5">
+                  <span class="text-gray-400">Requires</span>
+                  <span class="text-white font-medium text-right max-w-[60%]">{mod.requires.join(", ")}</span>
+                </div>
+              )
+            }
+            {
               mod.version && (
                 <div class="flex justify-between items-center pb-2 border-b border-white/5">
                   <span class="text-gray-400">Version</span>
@@ -604,6 +628,3 @@ const iconColors: Record<string, string> = {
   }
 </style>
 
-<script>
-  // Script tag kept for future client-side logic
-</script>

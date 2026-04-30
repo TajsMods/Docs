@@ -1,0 +1,42 @@
+---
+title: Installation Guide
+description: Learn how to install and configure TajemnikTV mods.
+---
+
+Welcome to the **Taj's Mods** ecosystem. This guide explains how to install and manage mods for Upload Labs using the Godot Mod Loader.
+
+## 1. Prerequisites
+
+Before installing any mods, you need the official **Godot Mod Loader**:
+- **Requirement:** Install [Godot Mod Loader 7.0.0](https://github.com/GodotModding/godot-mod-loader/releases) (or higher).
+- Follow their [official documentation](https://wiki.godotmodding.com/) to set up the Mod Loader for your game version.
+
+## 2. Core Framework (Required)
+
+Because the TajsMods ecosystem is fully modular, you must install **TajemnikTV-Core** first. It provides the shared systems, Event Bus, logging, and UI frameworks that the other modules rely on.
+
+1. Download **TajemnikTV-Core** from [Steam Workshop](/mods/core/) or GitHub.
+2. Ensure the mod is placed in your `mods/` directory as `TajemnikTV-Core.zip` (or as an unpacked folder).
+3. Enable it in your Mod Loader configuration.
+
+## 3. Install Optional Modules
+
+Once **Core** is installed and active, you can pick and choose which features you want by installing optional modules:
+
+- **[TajemnikTV-QoL](/mods/qol/):** Quality-of-life enhancements and UX improvements.
+- **[Command Palette](/mods/command-palette/):** An advanced quick-access overlay (`Ctrl+K` by default) for power users.
+- **[Cheats](/mods/cheats/):** Developer testing utilities and unlockers.
+
+Just download them and drop them into your `mods/` folder alongside Core.
+
+## 4. Compatibility Notes
+
+- Ensure you do not install the legacy **Taj's Mod** bundle alongside the modular versions (`Core`, `QoL`, etc.). The monolithic version is deprecated and will conflict.
+- The load order doesn't explicitly matter as long as **TajemnikTV-Core** is active. The Mod Loader handles dependency resolution automatically.
+
+## 5. Getting Help
+
+If you encounter bugs, crashes, or missing features:
+1. Verify you have the correct version of **TajemnikTV-Core** installed.
+2. Check the game's developer console for any red error logs (Core provides detailed diagnostics).
+3. Report the issue on the specific module's **GitHub Issues** page.

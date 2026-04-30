@@ -7,6 +7,12 @@
  * - Navigation and footer links
  */
 
+// TODO: Write a small validation script or use zod to ensure:
+// - Slugs are unique
+// - Every mod has slug, name, shortDescription, status, tags, links
+// - Featured mods have logos
+// - Internal docs links start with /docs/
+
 export type ModStatus = 'stable' | 'beta' | 'wip';
 
 export interface ModLink {
@@ -21,6 +27,10 @@ export interface Mod {
   shortDescription: string;
   longDescription?: string;
   status: ModStatus;
+  role?: "foundation" | "optional" | "legacy" | "debug";
+  requires?: string[];
+  installPriority?: number;
+  recommended?: boolean;
   tags: string[];
   links: ModLink[];
   version?: string;
@@ -68,10 +78,14 @@ export const mods: Mod[] = [
     name: 'TajemnikTV-Core',
     shortDescription: 'The foundational library required for all other modules. Provides shared APIs, standardized diagnostic output, and essential UI framework components.',
     status: 'stable',
+    role: 'foundation',
+    installPriority: 1,
+    recommended: true,
     tags: ['Utility', 'Tools'],
     links: [
       { type: 'github', url: 'https://github.com/TajsMods/Core', label: 'GitHub' },
       { type: 'issues', url: 'https://github.com/TajsMods/Core/issues', label: 'Issues' },
+      { type: 'docs', url: '/docs/core/main/', label: 'Documentation' },
     ],
     version: '1.2.0',
     logo: 'brand/Core - 512x.png',
@@ -83,6 +97,10 @@ export const mods: Mod[] = [
     name: 'TajemnikTV-QoL',
     shortDescription: 'A collection of quality-of-life improvements. Enhances existing interfaces, streamlines repetitive tasks, and adjusts visual feedback for better clarity.',
     status: 'stable',
+    role: 'optional',
+    requires: ['TajemnikTV-Core'],
+    installPriority: 2,
+    recommended: true,
     tags: ['QoL', 'Utility'],
     links: [
       { type: 'github', url: 'https://github.com/TajsMods/QoL', label: 'GitHub' },
@@ -98,6 +116,10 @@ export const mods: Mod[] = [
     name: 'Command Palette',
     shortDescription: 'An advanced overlay for executing quick commands, searching active processes, and toggling debug states without navigating complex menus.',
     status: 'stable',
+    role: 'optional',
+    requires: ['TajemnikTV-Core'],
+    installPriority: 3,
+    recommended: true,
     tags: ['UI', 'Utility', 'QoL'],
     links: [
       { type: 'github', url: 'https://github.com/TajsMods/CommandPalette', label: 'GitHub' },
@@ -113,6 +135,10 @@ export const mods: Mod[] = [
     name: 'Cheats',
     shortDescription: 'Debug and testing tools for developers and power users. Unlock hidden features and test scenarios.',
     status: 'beta',
+    role: 'debug',
+    requires: ['TajemnikTV-Core'],
+    installPriority: 4,
+    recommended: false,
     tags: ['Debug', 'Tools', 'Utility'],
     links: [
       { type: 'github', url: 'https://github.com/TajsMods/Cheats', label: 'GitHub' },
@@ -130,6 +156,9 @@ export const mods: Mod[] = [
 
 **Note:** This monolithic version is now deprecated. Users should switch to the modular versions (Core, QoL, Command Palette, Cheats) for better compatibility, more frequent updates, and less performance overhead.`,
     status: 'stable',
+    role: 'legacy',
+    installPriority: 99,
+    recommended: false,
     tags: ['Legacy', 'Bundle'],
     links: [
       { type: 'steam', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=3628222709', label: 'Steam Workshop' },

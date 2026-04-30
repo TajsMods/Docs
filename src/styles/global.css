@@ -16,9 +16,6 @@
     color-scheme: dark;
   }
 
-  * {
-    /* Broad transitions removed */
-  }
 
   /* Glass card effect - for content cards */
   .glass-card {

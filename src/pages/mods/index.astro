@@ -235,6 +235,11 @@ const allTags = getAllTags();
         btn.className = isAll ? "filter-btn chip-active" : "filter-btn chip";
       });
 
+      // Update URL query
+      const url = new URL(window.location.href);
+      url.searchParams.delete("filter");
+      window.history.replaceState({}, "", url);
+
       filterAndSort();
     }
 
@@ -254,6 +259,15 @@ const allTags = getAllTags();
           b.className =
             b === btn ? "filter-btn chip-active" : "filter-btn chip";
         });
+
+        // Update URL query
+        const url = new URL(window.location.href);
+        if (currentFilter === "all") {
+          url.searchParams.delete("filter");
+        } else {
+          url.searchParams.set("filter", currentFilter);
+        }
+        window.history.replaceState({}, "", url);
 
         filterAndSort();
       });
