@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
 import { screenshots } from "../../data/screenshots";
 import { mods } from "../../data/mods";
 
@@ -21,33 +21,31 @@ export function getStaticPaths() {
   }));
 }
 
-const { mod } = Astro.params;
 const { modName } = Astro.props;
 
 // Filter screenshots for the current mod
 const filteredScreenshots = screenshots.filter((s) => s.mod === modName);
 ---
 
-<BaseLayout title={`${modName} Screenshots`}>
-  <div class="pt-24 pb-12 container-wide">
-    <div class="text-center mb-12 animate-fade-in">
-      <h1
-        class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent"
-      >
+<SiteLayout title={`${modName} Screenshots`}>
+  <div class="pt-32 pb-20 px-4 sm:px-6 max-w-7xl mx-auto">
+    <div class="text-center mb-16 relative">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
         {modName} Gallery
       </h1>
-      <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+      <p class="text-slate-400 max-w-2xl mx-auto text-lg">
         Explore visual highlights and features from the {modName} mod.
       </p>
+      <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-surface-tint/5 rounded-full blur-[80px] pointer-events-none"></div>
     </div>
 
     {
       filteredScreenshots.length > 0 ? (
         <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {filteredScreenshots.map((shot) => (
-            <div class="break-inside-avoid group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-brand-purple/50 transition-all duration-300 hover:shadow-lg hover:shadow-brand-purple/20">
+            <div class="break-inside-avoid group relative rounded-xl overflow-hidden border border-white/5 bg-surface-container hover:border-surface-tint/50 transition-all duration-300">
               <img
-                src={shot.src}
+                src={`${import.meta.env.BASE_URL}${shot.src.startsWith('/') ? shot.src.slice(1) : shot.src}`}
                 alt={shot.alt}
                 class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
@@ -61,8 +59,8 @@ const filteredScreenshots = screenshots.filter((s) => s.mod === modName);
           ))}
         </div>
       ) : (
-        <div class="text-center py-20 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
-          <p class="text-xl text-gray-400">
+        <div class="text-center py-20 bg-surface-container rounded-xl border border-white/5">
+          <p class="text-xl text-on-surface-variant">
             No screenshots found for this mod yet.
           </p>
           <a
@@ -75,4 +73,4 @@ const filteredScreenshots = screenshots.filter((s) => s.mod === modName);
       )
     }
   </div>
-</BaseLayout>
+</SiteLayout>

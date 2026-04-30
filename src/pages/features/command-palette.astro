@@ -1,79 +1,75 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
 import { features } from "../../data/features";
 import PageActions from "../../components/PageActions.astro";
-import CopyButton from "../../components/CopyButton.astro";
 
 // Find the command palette feature
 const feature = features.find((f) => f.id === "command-palette");
 if (!feature) {
   return Astro.redirect("/features/");
 }
-
-const BASE_URL = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout
+<SiteLayout
   title="Command Palette"
   description="The Command Palette is your quick-access hub for all mod features. Learn how to use fuzzy search, keyboard navigation, and more."
 >
   <!-- Hero -->
-  <section
-    class="bg-gradient-to-b from-accent-50 to-white dark:from-accent-900/20 dark:to-dark-950 pt-16 pb-12"
-  >
-    <div class="container-narrow text-center">
+  <section class="py-16 md:py-20 relative overflow-hidden border-b border-white/5">
+    <div class="container-narrow text-center relative z-10">
       <div class="text-6xl mb-6">{feature.icon}</div>
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">{feature.title}</h1>
-      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">{feature.title}</h1>
+      <p class="text-slate-400 max-w-2xl mx-auto text-lg">
         {feature.description}
       </p>
       <div class="flex flex-wrap justify-center gap-2 mt-6">
         {
           feature.tags.map((tag) => (
-            <span class="px-3 py-1 bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-sm">
+            <span class="px-3 py-1 bg-surface-tint/10 text-surface-tint border border-surface-tint/20 rounded-full text-sm">
               {tag}
             </span>
           ))
         }
       </div>
     </div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-surface-tint/5 rounded-full blur-[100px]"></div>
   </section>
 
   <section class="section">
     <div class="container-narrow">
       <!-- Intro -->
       <div class="prose dark:prose-invert max-w-none mb-12">
-        <p class="text-lg">
+        <p class="text-lg text-on-surface-variant">
           {feature.longDescription || feature.description}
         </p>
       </div>
 
       <!-- How to Open -->
-      <div class="card mb-8">
-        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-          <span>🚀</span>
+      <div class="bg-surface-container border border-white/5 rounded-xl p-8 mb-8">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-white">
+          <span class="material-symbols-outlined text-surface-tint">rocket_launch</span>
           How to Open
         </h2>
         <div class="grid sm:grid-cols-2 gap-4">
           <div
-            class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-dark-700/50 rounded-xl"
+            class="flex items-center gap-4 p-4 bg-surface-container-high rounded-xl border border-white/5"
           >
             <kbd
-              class="px-4 py-2 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-600 rounded-lg font-mono text-lg shadow-sm"
+              class="px-4 py-2 bg-surface-container-highest border border-white/10 rounded-lg font-mono text-lg shadow-sm text-white"
               >MMB</kbd
             >
-            <span class="text-gray-600 dark:text-gray-400"
+            <span class="text-on-surface-variant"
               >Middle Mouse Button</span
             >
           </div>
           <div
-            class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-dark-700/50 rounded-xl"
+            class="flex items-center gap-4 p-4 bg-surface-container-high rounded-xl border border-white/5"
           >
             <kbd
-              class="px-4 py-2 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-600 rounded-lg font-mono text-lg shadow-sm"
+              class="px-4 py-2 bg-surface-container-highest border border-white/10 rounded-lg font-mono text-lg shadow-sm text-white"
               >Space</kbd
             >
-            <span class="text-gray-600 dark:text-gray-400"
+            <span class="text-on-surface-variant"
               >Spacebar (when not typing)</span
             >
           </div>
@@ -81,54 +77,45 @@ const BASE_URL = import.meta.env.BASE_URL;
       </div>
 
       <!-- Features -->
-      <div class="card mb-8">
-        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-          <span>✨</span>
+      <div class="bg-surface-container border border-white/5 rounded-xl p-8 mb-8">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-white">
+          <span class="material-symbols-outlined text-surface-tint">auto_fix_high</span>
           Features
         </h2>
-        <ul class="space-y-3">
+        <ul class="space-y-4">
           <li class="flex items-start gap-3">
-            <span class="text-accent-500 mt-1">✓</span>
+            <span class="material-symbols-outlined text-surface-tint text-base mt-1">check_circle</span>
             <div>
-              <strong>Fuzzy Search</strong>
-              <p class="text-gray-600 dark:text-gray-400 text-sm">
+              <strong class="text-on-surface">Fuzzy Search</strong>
+              <p class="text-on-surface-variant text-sm">
                 Type partial words like "scr" to find "screenshot"
               </p>
             </div>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-accent-500 mt-1">✓</span>
+            <span class="material-symbols-outlined text-surface-tint text-base mt-1">check_circle</span>
             <div>
-              <strong>Quick Actions</strong>
-              <p class="text-gray-600 dark:text-gray-400 text-sm">
+              <strong class="text-on-surface">Quick Actions</strong>
+              <p class="text-on-surface-variant text-sm">
                 Toggle settings, run commands, navigate to groups
               </p>
             </div>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-accent-500 mt-1">✓</span>
+            <span class="material-symbols-outlined text-surface-tint text-base mt-1">check_circle</span>
             <div>
-              <strong>Calculator</strong>
-              <p class="text-gray-600 dark:text-gray-400 text-sm">
+              <strong class="text-on-surface">Calculator</strong>
+              <p class="text-on-surface-variant text-sm">
                 Built-in calculator for quick math
               </p>
             </div>
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-accent-500 mt-1">✓</span>
+            <span class="material-symbols-outlined text-surface-tint text-base mt-1">check_circle</span>
             <div>
-              <strong>Jump to Group</strong>
-              <p class="text-gray-600 dark:text-gray-400 text-sm">
+              <strong class="text-on-surface">Jump to Group</strong>
+              <p class="text-on-surface-variant text-sm">
                 Quickly navigate to any group node by name
-              </p>
-            </div>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-accent-500 mt-1">✓</span>
-            <div>
-              <strong>Jump to Note</strong>
-              <p class="text-gray-600 dark:text-gray-400 text-sm">
-                Navigate to sticky notes
               </p>
             </div>
           </li>
@@ -136,65 +123,65 @@ const BASE_URL = import.meta.env.BASE_URL;
       </div>
 
       <!-- Keyboard Shortcuts -->
-      <div class="card mb-8">
-        <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-          <span>⌨️</span>
+      <div class="bg-surface-container border border-white/5 rounded-xl p-8 mb-8">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-white">
+          <span class="material-symbols-outlined text-surface-tint">keyboard</span>
           Keyboard Navigation
         </h2>
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
             <thead>
-              <tr class="border-b border-gray-200 dark:border-dark-700">
-                <th class="text-left py-2 pr-4 font-medium">Key</th>
-                <th class="text-left py-2 font-medium">Action</th>
+              <tr class="border-b border-white/10 text-on-surface-variant">
+                <th class="text-left py-2 pr-4 font-medium uppercase tracking-wider text-xs">Key</th>
+                <th class="text-left py-2 font-medium uppercase tracking-wider text-xs">Action</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100 dark:divide-dark-700">
+            <tbody class="divide-y divide-white/5">
               <tr>
-                <td class="py-2 pr-4"
+                <td class="py-3 pr-4"
                   ><kbd
-                    class="px-2 py-1 bg-gray-100 dark:bg-dark-700 rounded text-xs font-mono"
+                    class="px-2 py-1 bg-surface-container-highest rounded text-xs font-mono text-white"
                     >↑</kbd
                   >
                   <kbd
-                    class="px-2 py-1 bg-gray-100 dark:bg-dark-700 rounded text-xs font-mono"
+                    class="px-2 py-1 bg-surface-container-highest rounded text-xs font-mono text-white"
                     >↓</kbd
                   ></td
                 >
-                <td class="py-2 text-gray-600 dark:text-gray-400"
+                <td class="py-3 text-on-surface-variant"
                   >Navigate through results</td
                 >
               </tr>
               <tr>
-                <td class="py-2 pr-4"
+                <td class="py-3 pr-4"
                   ><kbd
-                    class="px-2 py-1 bg-gray-100 dark:bg-dark-700 rounded text-xs font-mono"
+                    class="px-2 py-1 bg-surface-container-highest rounded text-xs font-mono text-white"
                     >Enter</kbd
                   ></td
                 >
-                <td class="py-2 text-gray-600 dark:text-gray-400"
+                <td class="py-3 text-on-surface-variant"
                   >Select current item</td
                 >
               </tr>
               <tr>
-                <td class="py-2 pr-4"
+                <td class="py-3 pr-4"
                   ><kbd
-                    class="px-2 py-1 bg-gray-100 dark:bg-dark-700 rounded text-xs font-mono"
+                    class="px-2 py-1 bg-surface-container-highest rounded text-xs font-mono text-white"
                     >Escape</kbd
                   ></td
                 >
-                <td class="py-2 text-gray-600 dark:text-gray-400"
+                <td class="py-3 text-on-surface-variant"
                   >Close palette</td
                 >
               </tr>
               <tr>
-                <td class="py-2 pr-4"
+                <td class="py-3 pr-4"
                   ><kbd
-                    class="px-2 py-1 bg-gray-100 dark:bg-dark-700 rounded text-xs font-mono"
+                    class="px-2 py-1 bg-surface-container-highest rounded text-xs font-mono text-white"
                     >Backspace</kbd
                   ></td
                 >
-                <td class="py-2 text-gray-600 dark:text-gray-400"
+                <td class="py-3 text-on-surface-variant"
                   >Go back (in sub-menus)</td
                 >
               </tr>
@@ -206,15 +193,15 @@ const BASE_URL = import.meta.env.BASE_URL;
       <!-- Tips -->
       {
         feature.tips && feature.tips.length > 0 && (
-          <div class="card bg-accent-50 dark:bg-accent-900/10 border-accent-200 dark:border-accent-800/30 mb-8">
-            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-              <span>💡</span>
+          <div class="bg-surface-tint/5 border border-surface-tint/20 rounded-xl p-8 mb-8">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-white">
+              <span class="material-symbols-outlined text-surface-tint">lightbulb</span>
               Pro Tips
             </h2>
-            <ul class="space-y-2">
+            <ul class="space-y-3">
               {feature.tips.map((tip) => (
-                <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                  <span class="text-accent-500">•</span>
+                <li class="flex items-start gap-3 text-on-surface-variant">
+                  <span class="text-surface-tint">•</span>
                   {tip}
                 </li>
               ))}
@@ -224,31 +211,20 @@ const BASE_URL = import.meta.env.BASE_URL;
       }
 
       <!-- Back to Features -->
-      <div class="text-center">
+      <div class="text-center mt-12">
         <a
-          href={`${BASE_URL}/features/`}
+          href={`${import.meta.env.BASE_URL}features/`}
           class="btn-secondary inline-flex items-center gap-2"
         >
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-          </svg>
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
           Back to All Features
         </a>
       </div>
 
       <!-- Page Actions -->
-      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-dark-700">
+      <div class="mt-12 pt-8 border-t border-white/5">
         <PageActions editPath="/features/command-palette.astro" />
       </div>
     </div>
   </section>
-</BaseLayout>
+</SiteLayout>

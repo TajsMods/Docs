@@ -53,7 +53,7 @@ const moduleStyleMap: Record<string, any> = {
           </p>
           <div class="flex justify-between items-center mt-auto border-t border-white/5 pt-4">
             <span class={`text-xs font-label ${style.typeClass} uppercase tracking-wider`}>{style.typeLabel}</span>
-            <a class={`${style.linkClass} flex items-center gap-1 text-sm font-semibold transition-colors`} href={`${siteConfig.docs}/${module.slug}`}>
+            <a class={`${style.linkClass} flex items-center gap-1 text-sm font-semibold transition-colors`} href={`${import.meta.env.BASE_URL}mods/${module.slug}/`}>
               Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </a>
           </div>

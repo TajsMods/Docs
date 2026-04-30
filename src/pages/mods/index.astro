@@ -3,25 +3,25 @@
  * Mods Directory Page - /mods
  * Displays all mods with filtering and search
  */
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
 import ModCard from "../../components/ModCard.astro";
-import { mods, getAllTags, statusConfig } from "../../data/mods";
+import { mods, getAllTags } from "../../data/mods";
 
 const allTags = getAllTags();
 ---
 
-<BaseLayout
+<SiteLayout
   title="All Mods"
   description="Browse the complete collection of mods for Upload Labs. Quality-of-life enhancements, visual tweaks, and powerful tools."
 >
-  <!-- Header -->
-  <section class="relative z-10 py-16 md:py-20">
-    <div class="container-wide text-center">
+  <section class="py-16 md:py-20 relative overflow-hidden border-b border-white/5">
+    <div class="container-wide text-center relative z-10">
       <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">All Mods</h1>
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+      <p class="text-slate-400 max-w-2xl mx-auto text-lg">
         Browse the complete collection of mods for Upload Labs
       </p>
     </div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-surface-tint/5 rounded-full blur-[100px]"></div>
   </section>
 
   <!-- Filters and Mods -->
@@ -119,7 +119,7 @@ const allTags = getAllTags();
       </div>
     </div>
   </section>
-</BaseLayout>
+</SiteLayout>
 
 <script>
   function initModsFilter() {
