@@ -5,71 +5,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        "on-tertiary-fixed-variant": "#41474f",
-        "surface-tint": "#00dbe9",
-        "surface-bright": "#353940",
-        "surface": "#10141a",
-        "on-tertiary-fixed": "#161c23",
-        "surface-container": "#1c2026",
-        "on-secondary-fixed-variant": "#42474f",
-        "secondary-fixed-dim": "#c2c7d0",
-        "error-container": "#93000a",
-        "primary-fixed": "#7df4ff",
-        "on-tertiary-container": "#595f67",
-        "on-primary-container": "#006970",
-        "on-error-container": "#ffdad6",
-        "primary-container": "#00f0ff",
-        "surface-container-low": "#181c22",
-        "surface-container-high": "#262a31",
-        "tertiary": "#f1f6ff",
-        "on-surface-variant": "#b9cacb",
-        "secondary": "#c2c7d0",
-        "inverse-primary": "#006970",
-        "tertiary-fixed-dim": "#c1c7d0",
-        "on-primary": "#00363a",
-        "outline": "#849495",
-        "tertiary-container": "#d4dae3",
-        "outline-variant": "#3b494b",
-        "inverse-on-surface": "#2d3137",
-        "inverse-surface": "#dfe2eb",
-        "background": "#10141a",
-        "on-secondary": "#2c3138",
-        "primary": "#dbfcff",
-        "on-secondary-fixed": "#171c23",
-        "secondary-container": "#42474f",
-        "surface-container-lowest": "#0a0e14",
-        "tertiary-fixed": "#dde3ec",
-        "on-background": "#dfe2eb",
-        "secondary-fixed": "#dee2ec",
-        "on-primary-fixed-variant": "#004f54",
-        "on-tertiary": "#2b3138",
-        "surface-container-highest": "#31353c",
-        "surface-dim": "#10141a",
-        "on-surface": "#dfe2eb",
-        "on-error": "#690005",
-        "on-secondary-container": "#b1b5bf",
-        "primary-fixed-dim": "#00dbe9",
-        "surface-variant": "#31353c",
-        "on-primary-fixed": "#002022",
-        "error": "#ffb4ab",
-        "accent-purple": "#8b5cf6",
+        "surface-tint": "var(--surface-tint)",
+        "accent-purple": "var(--accent-purple)",
+        "background": "var(--background)",
+        "on-background": "var(--on-background)",
+        "surface": "var(--surface)",
+        "on-surface": "var(--on-surface)",
+        "surface-container": "var(--surface-container)",
+        "surface-container-low": "var(--surface-container-low)",
+        "surface-container-high": "var(--surface-container-high)",
+        "surface-container-highest": "var(--surface-container-highest)",
+        "surface-container-lowest": "var(--surface-container-lowest)",
+        "on-surface-variant": "var(--on-surface-variant)",
+        "outline": "var(--outline)",
+        "outline-variant": "var(--outline-variant)",
+        "primary-container": "var(--primary-container)",
+        "on-primary-container": "var(--on-primary-container)",
         
-        // Background colors from the new design
-        'bg-dark': '#0f111a', // Deep dark blue/black
-        'bg-panel': 'rgba(30, 32, 45, 0.6)',
+        // Glass effect colors (mapped to variables)
+        'glass-bg': 'var(--glass-bg)',
+        'glass-border': 'var(--glass-border)',
+        'glass-hover-bg': 'var(--glass-hover-bg)',
         
-        // Glass effect colors
-        'glass-bg': 'rgba(255, 255, 255, 0.05)',
-        'glass-border': 'rgba(255, 255, 255, 0.1)',
-        'glass-highlight': 'rgba(255, 255, 255, 0.15)',
-        
-        // Brand specific colors
+        // Keep legacy brand colors or map them if needed
         brand: {
-          dark: '#0f111a',   // Deep dark background
-          purple: '#8b5cf6', // Neon purple
-          blue: '#3b82f6',   // Neon blue
-          cyan: '#06b6d4',   // Cyber cyan
-          indigo: '#6366f1', // Indigo
+          dark: '#0f111a',
+          purple: '#8b5cf6',
+          blue: '#3b82f6',
+          cyan: '#06b6d4',
+          indigo: '#6366f1',
         },
       },
       backgroundImage: {

@@ -12,26 +12,26 @@ const moduleStyleMap: Record<string, any> = {
     borderClass: 'hover:border-surface-tint/50',
     typeLabel: 'Required / Foundation',
     typeClass: 'text-surface-tint',
-    linkClass: 'text-surface-tint hover:text-primary-fixed'
+    linkClass: 'text-surface-tint hover:text-surface-tint/80'
   },
   'qol': {
-    accentClass: 'bg-white/5 group-hover:bg-surface-tint/50',
+    accentClass: 'bg-glass-bg group-hover:bg-surface-tint/50',
     borderClass: 'hover:border-surface-tint/50',
     typeLabel: 'Optional / Requires Core',
     typeClass: 'text-outline',
-    linkClass: 'text-surface-tint hover:text-primary-fixed'
+    linkClass: 'text-surface-tint hover:text-surface-tint/80'
   },
   'command-palette': {
     accentClass: 'bg-accent-purple/20 group-hover:bg-accent-purple',
     borderClass: 'hover:border-accent-purple/50',
     typeLabel: 'Optional / Requires Core',
     typeClass: 'text-accent-purple',
-    linkClass: 'text-accent-purple hover:text-purple-400'
+    linkClass: 'text-accent-purple hover:text-accent-purple/80'
   }
 };
 ---
-<section class="max-w-[1440px] mx-auto px-8 py-20 border-t border-white/5">
-  <h2 class="font-headline text-3xl font-semibold mb-12 text-primary flex items-center gap-3">
+<section class="max-w-[1440px] mx-auto px-8 py-20 border-t border-glass-border">
+  <h2 class="font-headline text-3xl font-semibold mb-12 text-on-background flex items-center gap-3">
     <span class="material-symbols-outlined text-surface-tint">grid_view</span>
     Available Modules
   </h2>
@@ -41,17 +41,17 @@ const moduleStyleMap: Record<string, any> = {
       const style = moduleStyleMap[module.slug] || moduleStyleMap['qol'];
       
       return (
-        <div class={`bg-surface-container group hover:bg-surface-container-high transition-colors border border-white/5 ${style.borderClass} rounded-lg p-6 flex flex-col h-full relative overflow-hidden`}>
+        <div class={`bg-surface-container group hover:bg-surface-container-high transition-colors border border-glass-border ${style.borderClass} rounded-lg p-6 flex flex-col h-full relative overflow-hidden`}>
           <div class={`absolute top-0 left-0 w-full h-1 ${style.accentClass} transition-colors`}></div>
           <div class="flex justify-between items-start mb-6">
             <h3 class="font-headline text-xl font-semibold text-on-surface">{module.name}</h3>
-            <span class="px-2 py-1 bg-surface-container-highest rounded text-xs font-label text-surface-tint">v{module.version}</span>
+            <span class="px-2 py-1 bg-primary-container rounded text-xs font-label text-on-primary-container font-bold">v{module.version}</span>
           </div>
           <p class="text-on-surface-variant font-body mb-8 flex-grow">
             {module.shortDescription}
           </p>
-          <div class="flex justify-between items-center mt-auto border-t border-white/5 pt-4">
-            <span class={`text-xs font-label ${style.typeClass} uppercase tracking-wider`}>{style.typeLabel}</span>
+          <div class="flex justify-between items-center mt-auto border-t border-glass-border pt-4">
+            <span class={`text-xs font-label ${style.typeClass === 'text-outline' ? 'text-on-surface-variant' : style.typeClass} uppercase tracking-wider`}>{style.typeLabel}</span>
             <a class={`${style.linkClass} flex items-center gap-1 text-sm font-semibold transition-colors`} href={`${import.meta.env.BASE_URL}mods/${module.slug}/`}>
               Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </a>

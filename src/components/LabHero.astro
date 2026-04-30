@@ -11,40 +11,40 @@ const cpMod = mods.find(m => m.slug === 'command-palette');
   <div class="space-y-8">
     <div class="flex flex-wrap gap-3 font-label text-xs uppercase tracking-widest">
       <span class="px-3 py-1 rounded bg-accent-purple/20 text-accent-purple border border-accent-purple/30">Very WIP</span>
-      <span class="px-3 py-1 rounded bg-surface-container-high text-on-surface-variant border border-white/10">Godot {siteConfig.godotVersion}</span>
-      <span class="px-3 py-1 rounded bg-surface-container-high text-on-surface-variant border border-white/10">Mod Loader {siteConfig.modLoaderVersion}</span>
+      <span class="px-3 py-1 rounded bg-surface-container-high text-on-surface-variant border border-glass-border">Godot {siteConfig.godotVersion}</span>
+      <span class="px-3 py-1 rounded bg-surface-container-high text-on-surface-variant border border-glass-border">Mod Loader {siteConfig.modLoaderVersion}</span>
     </div>
-    <h1 class="font-headline text-5xl lg:text-7xl font-semibold tracking-tighter leading-[1.1] text-primary">
-      Modular Enhancements for <br/> <span class="text-surface-tint drop-shadow-[0_0_15px_rgba(0,219,233,0.5)]">Upload Labs</span>.
+    <h1 class="font-headline text-5xl lg:text-7xl font-semibold tracking-tighter leading-[1.1] text-on-background">
+      Modular Enhancements for <br/> <span class="text-surface-tint drop-shadow-[0_0_15px_rgba(0,219,233,0.3)]">Upload Labs</span>.
     </h1>
     <p class="font-body text-lg text-on-surface-variant max-w-xl leading-relaxed">
       A suite of quality-of-life tweaks, debug utilities, and a core framework designed to extend functionality in Upload Labs. Built on the Godot Mod Loader.
     </p>
     <div class="flex items-center gap-4 pt-4">
-      <a href={siteConfig.githubReleases} class="px-6 py-3 bg-surface-tint text-on-primary font-headline font-semibold rounded hover:bg-primary-fixed transition-colors shadow-[0_0_15px_rgba(0,219,233,0.2)]">
+      <a href={siteConfig.githubReleases} class="px-6 py-3 bg-surface-tint text-[#00363a] font-headline font-semibold rounded hover:brightness-110 transition-all shadow-[0_0_15px_rgba(0,219,233,0.2)]">
         Download Core
       </a>
-      <a href={siteConfig.docs} class="px-6 py-3 border border-outline-variant text-on-surface font-headline font-semibold rounded hover:bg-surface-container-high transition-colors">
+      <a href={siteConfig.docs} class="px-6 py-3 border border-glass-border text-on-surface font-headline font-semibold rounded hover:bg-surface-container-high transition-colors">
         View Documentation
       </a>
     </div>
   </div>
   <!-- Console Preview -->
-  <div class="relative bg-surface-container rounded-lg border border-white/10 overflow-hidden font-body text-sm shadow-2xl">
-    <div class="flex items-center px-4 py-3 bg-surface-container-high border-b border-white/10">
+  <div class="relative bg-surface-container rounded-lg border border-glass-border overflow-hidden font-body text-sm shadow-2xl">
+    <div class="flex items-center px-4 py-3 bg-surface-container-high border-b border-glass-border">
       <span class="material-symbols-outlined text-surface-tint mr-2 text-lg">terminal</span>
       <span class="text-on-surface-variant font-label tracking-wider uppercase text-xs">Mod Manager Terminal</span>
     </div>
-    <div class="p-6 space-y-3 font-mono text-on-surface-variant h-64 overflow-y-auto">
+    <div class="p-6 space-y-3 font-mono text-on-surface-variant h-64 overflow-y-auto custom-scrollbar">
       <div class="flex text-surface-tint"><span class="mr-3 opacity-50">&gt;</span> Initialize UploadLabs Environment... [OK]</div>
       <div class="flex text-on-surface"><span class="mr-3 opacity-50">&gt;</span> Loading TajemnikTV-Core v{coreMod?.version || '1.2.0'}...</div>
-      <div class="flex text-on-surface pl-6 border-l border-white/10 ml-1 py-1">
+      <div class="flex text-on-surface-variant pl-6 border-l border-glass-border ml-1 py-1">
         - Injecting Shared APIs... Done<br/>
         - Establishing Diagnostic Hooks... Done
       </div>
       <div class="flex text-surface-tint"><span class="mr-3 opacity-50">&gt;</span> Core Loaded Successfully.</div>
       <div class="flex text-on-surface"><span class="mr-3 opacity-50">&gt;</span> Loading TajemnikTV-QoL v{qolMod?.version || '0.9.4'}...</div>
-      <div class="flex text-on-surface pl-6 border-l border-white/10 ml-1 py-1">
+      <div class="flex text-on-surface-variant pl-6 border-l border-glass-border ml-1 py-1">
         - Applying UI Tweaks... Done
       </div>
       <div class="flex text-surface-tint"><span class="mr-3 opacity-50">&gt;</span> QoL Loaded Successfully.</div>

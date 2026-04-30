@@ -28,7 +28,7 @@ const tagColors: Record<string, string> = {
 };
 
 const getTagClass = (tag: string) =>
-  tagColors[tag] || "tag bg-white/5 text-gray-300 border-white/10";
+  tagColors[tag] || "tag bg-surface-container text-on-surface-variant border-outline-variant";
 ---
 
 <article
@@ -55,7 +55,7 @@ const getTagClass = (tag: string) =>
     <div class="flex-1 min-w-0">
       <div class="flex items-center gap-2 flex-wrap">
         <h3
-          class="text-lg font-bold text-white truncate group-hover:text-surface-tint transition-colors"
+          class="text-lg font-bold text-on-background truncate group-hover:text-surface-tint transition-colors"
         >
           {mod.name}
         </h3>
@@ -67,7 +67,7 @@ const getTagClass = (tag: string) =>
       </div>
       {
         mod.version && (
-          <span class="px-2 py-0.5 rounded-md text-xs font-medium bg-white/10 text-gray-300 border border-white/10">
+          <span class="px-2 py-0.5 rounded-md text-xs font-medium bg-surface-container text-on-surface-variant border border-outline-variant">
             v{mod.version}
           </span>
         )
@@ -76,7 +76,7 @@ const getTagClass = (tag: string) =>
   </div>
 
   <!-- Description -->
-  <p class="text-gray-400 text-sm mb-4 line-clamp-2">
+  <p class="text-on-surface-variant text-sm mb-4 line-clamp-2">
     {mod.shortDescription}
   </p>
 

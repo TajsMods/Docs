@@ -20,8 +20,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(image, Astro.site);
 ---
 
-<!doctype html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,6 +58,35 @@ const socialImageURL = new URL(image, Astro.site);
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
     </style>
+
+    <!-- Theme Detection Script -->
+    <script is:inline>
+      const themeScript = () => {
+        const getTheme = () => {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme')) {
+            return localStorage.getItem('starlight-theme');
+          }
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+          }
+          return 'light';
+        };
+
+        const theme = getTheme();
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        window.localStorage.setItem('starlight-theme', theme);
+      };
+
+      themeScript();
+      document.addEventListener('astro:after-swap', themeScript);
+    </script>
 
     <ClientRouter />
   </head>

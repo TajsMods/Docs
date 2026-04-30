@@ -1,0 +1,66 @@
+---
+---
+
+<button
+  id="theme-toggle"
+  class="relative flex items-center justify-center w-10 h-10 rounded-full bg-glass-bg border border-glass-border text-on-surface-variant hover:text-surface-tint hover:bg-glass-hover-bg transition-all focus:outline-none focus:ring-2 focus:ring-surface-tint/50"
+  aria-label="Toggle theme"
+>
+  <span class="material-symbols-outlined sun-icon hidden">light_mode</span>
+  <span class="material-symbols-outlined moon-icon hidden">dark_mode</span>
+</button>
+
+<script>
+  function setupThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = themeToggle?.querySelector('.sun-icon');
+    const moonIcon = themeToggle?.querySelector('.moon-icon');
+
+    const updateIcons = (theme: string) => {
+      if (theme === 'light') {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    };
+
+    const setTheme = (theme: string) => {
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+      window.localStorage.setItem('starlight-theme', theme);
+      updateIcons(theme);
+    };
+
+    // Initial icon state
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    updateIcons(currentTheme);
+
+    // Remove old listeners if any (though standard addEventListener doesn't duplicate if function is same, but here it's an anonymous one)
+    // Actually, since this script runs as a module, we can just ensure we only attach once per element.
+    if (themeToggle) {
+      themeToggle.onclick = () => {
+        const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+      };
+    }
+  }
+
+  // Run on initial load
+  setupThemeToggle();
+
+  // Re-run on view transitions
+  document.addEventListener('astro:after-swap', setupThemeToggle);
+</script>
+
+<style>
+  #theme-toggle {
+    cursor: pointer;
+  }
+</style>
