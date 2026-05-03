@@ -11,14 +11,49 @@ Generated on: 2026-01-16 21:38:01
 
 Use these runtime services first when integrating another Taj's mod:
 
-- `TajsCoreRuntime` (`res://mods-unpacked/TajemnikTV-Core/core/runtime.gd`) - singleton entrypoint (`Engine.get_meta("TajsCore")`).
-- `TajsCoreSettings` (`res://mods-unpacked/TajemnikTV-Core/core/settings.gd`) - schema-backed settings and typed getters.
-- `TajsCoreEventBus` (`res://mods-unpacked/TajemnikTV-Core/core/event_bus.gd`) - cross-mod events and sticky payloads.
-- `TajsCoreCommandRegistry` (`res://mods-unpacked/TajemnikTV-Core/core/commands/command_registry.gd`) - register/execute command palette actions.
-- `TajsCoreDiagnostics` (`res://mods-unpacked/TajemnikTV-Core/core/diagnostics.gd`) - support dumps, JSON export, clipboard copy.
-- `TajsCoreIconRegistry` (`res://mods-unpacked/TajemnikTV-Core/core/icon_registry.gd`) - icon indexing for picker/browser flows.
-- `TajsCoreModuleRegistry` (`res://mods-unpacked/TajemnikTV-Core/core/module_registry.gd`) - module metadata and min-core gating.
-- `TajsCoreUiManager` (`res://mods-unpacked/TajemnikTV-Core/core/ui/ui_manager.gd`) - settings tabs, HUD injection, popups, icon browser.
+- [`TajsCoreRuntime`](https://github.com/TajsMods/Core/blob/main/core/runtime.gd) - singleton entrypoint (`Engine.get_meta("TajsCore")`).
+- [`TajsCoreSettings`](https://github.com/TajsMods/Core/blob/main/core/settings.gd) - schema-backed settings and typed getters.
+- [`TajsCoreEventBus`](https://github.com/TajsMods/Core/blob/main/core/event_bus.gd) - cross-mod events and sticky payloads.
+- [`TajsCoreCommandRegistry`](https://github.com/TajsMods/Core/blob/main/core/commands/command_registry.gd) - register/execute command palette actions.
+- [`TajsCoreDiagnostics`](https://github.com/TajsMods/Core/blob/main/core/diagnostics.gd) - support dumps, JSON export, clipboard copy.
+- [`TajsCoreIconRegistry`](https://github.com/TajsMods/Core/blob/main/core/icon_registry.gd) - icon indexing for picker/browser flows.
+- [`TajsCoreModuleRegistry`](https://github.com/TajsMods/Core/blob/main/core/module_registry.gd) - module metadata and min-core gating.
+- [`TajsCoreUiManager`](https://github.com/TajsMods/Core/blob/main/core/ui/ui_manager.gd) - settings tabs, HUD injection, popups, icon browser.
+
+### Practical Start
+
+1. Get Core runtime:
+```gdscript
+var core: Variant = Engine.has_meta("TajsCore") ? Engine.get_meta("TajsCore") : null
+if core == null:
+    return
+```
+
+2. Wait until Core is ready:
+- Safe default: listen for `core.ready` on `core.event_bus`.
+- For UI services, wait for `core.ui.manager_ready` or `game.hud_ready`.
+
+3. Use namespaced IDs:
+- Format: `ModId.local_id` (example: `TajemnikTV-QoL.tools_tab`)
+- Applies to command IDs, icon IDs, tree entries, and tab IDs.
+
+4. ApiResult wrapper shape (runtime registration helpers):
+- Success: `{ "ok": true, "error": "", ...payload }`
+- Failure: `{ "ok": false, "error": "<code>", ...context }`
+- Source: `res://mods-unpacked/TajemnikTV-Core/core/api_result.gd`
+
+5. Where to register common contributions:
+- Commands: `core.register_action(...)` / `core.commands.register_command(...)`
+- Settings schema: `core.register_settings_schema(...)`
+- Icons: `core.register_icon(...)`
+- Window tabs: `core.register_window_tab(...)`
+
+6. Quick source links for those APIs:
+- Runtime wrappers: [`core/runtime.gd`](https://github.com/TajsMods/Core/blob/main/core/runtime.gd)
+- Command payload schema: [`core/commands/command_registry.gd`](https://github.com/TajsMods/Core/blob/main/core/commands/command_registry.gd)
+- Settings schema registry: [`core/settings.gd`](https://github.com/TajsMods/Core/blob/main/core/settings.gd)
+- Icon browser/registry: [`core/icon_registry.gd`](https://github.com/TajsMods/Core/blob/main/core/icon_registry.gd)
+- Window tabs/menu registry: [`core/window_menus.gd`](https://github.com/TajsMods/Core/blob/main/core/window_menus.gd)
 
 ## Table of Contents
 
