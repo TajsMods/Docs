@@ -7,6 +7,19 @@ description: Infrastructure-only mod for Upload Labs
 
 Generated on: 2026-01-16 21:38:01
 
+## Core API Quick Index
+
+Use these runtime services first when integrating another Taj's mod:
+
+- `TajsCoreRuntime` (`res://mods-unpacked/TajemnikTV-Core/core/runtime.gd`) - singleton entrypoint (`Engine.get_meta("TajsCore")`).
+- `TajsCoreSettings` (`res://mods-unpacked/TajemnikTV-Core/core/settings.gd`) - schema-backed settings and typed getters.
+- `TajsCoreEventBus` (`res://mods-unpacked/TajemnikTV-Core/core/event_bus.gd`) - cross-mod events and sticky payloads.
+- `TajsCoreCommandRegistry` (`res://mods-unpacked/TajemnikTV-Core/core/commands/command_registry.gd`) - register/execute command palette actions.
+- `TajsCoreDiagnostics` (`res://mods-unpacked/TajemnikTV-Core/core/diagnostics.gd`) - support dumps, JSON export, clipboard copy.
+- `TajsCoreIconRegistry` (`res://mods-unpacked/TajemnikTV-Core/core/icon_registry.gd`) - icon indexing for picker/browser flows.
+- `TajsCoreModuleRegistry` (`res://mods-unpacked/TajemnikTV-Core/core/module_registry.gd`) - module metadata and min-core gating.
+- `TajsCoreUiManager` (`res://mods-unpacked/TajemnikTV-Core/core/ui/ui_manager.gd`) - settings tabs, HUD injection, popups, icon browser.
+
 ## Table of Contents
 
 - [Introduction to Core Framework](#page-intro)
@@ -2581,4 +2594,3 @@ Sources: [LICENSE.md:86-93]()
 Taj's Core Framework provides a robust foundation for mod development in Upload Labs, offering a range of utilities and services to streamline the creation, debugging, and maintenance of mods. From foundational aspects like module registration and version checking to advanced features like diagnostics, patching, and feature flags, Core empowers developers with tools to build stable and extensible content. Adherence to the licensing terms, particularly regarding source availability for commercial add-ons and proper dependency management, ensures a healthy and collaborative ecosystem for all mod creators.
 
 ---
-
