@@ -5,56 +5,67 @@ import { faq } from "../data/faq";
 ---
 
 <SiteLayout
-  title="FAQ"
-  description="Frequently asked questions about Taj's Mods for Upload Labs. Find answers to common installation, troubleshooting, and feature questions."
+	title="FAQ"
+	description="Frequently asked questions about Taj's Mods for Upload Labs. Find answers to common installation, troubleshooting, and feature questions."
 >
-  <section class="py-16 md:py-20 relative overflow-hidden border-b border-outline-variant">
-    <div class="container-wide text-center relative z-10">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-on-background">Frequently Asked Questions</h1>
-      <p class="text-on-surface-variant max-w-2xl mx-auto text-lg">
-        Answers to common questions about installation and features
-      </p>
-    </div>
-    <div class="absolute -top-24 -right-24 w-96 h-96 bg-surface-tint/5 rounded-full blur-[100px]"></div>
-  </section>
+	<section
+		class="py-16 md:py-20 relative overflow-hidden border-b border-outline-variant"
+	>
+		<div class="container-wide text-center relative z-10">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4 text-on-background">
+				Frequently Asked Questions
+			</h1>
+			<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">
+				Answers to common questions about installation and features
+			</p>
+		</div>
+		<div
+			class="absolute -top-24 -right-24 w-96 h-96 bg-surface-tint/5 rounded-full blur-[100px]"
+		>
+		</div>
+	</section>
 
-  <!-- FAQ Content -->
-  <section class="section relative z-10">
-    <div class="container-narrow">
-      <FAQAccordion items={faq} showSearch={true} />
+	<!-- FAQ Content -->
+	<section class="section relative z-10">
+		<div class="container-narrow">
+			<FAQAccordion items={faq} showSearch={true} />
 
-      <!-- Still need help? -->
-      <div
-        class="mt-16 text-center p-10 glass-card rounded-2xl border border-outline-variant"
-      >
-        <h3 class="text-xl font-bold mb-4 text-on-background uppercase tracking-widest font-mono">Still have questions?</h3>
-        <p class="text-on-surface-variant mb-8 max-w-md mx-auto text-sm">
-          Can't find what you're looking for? Reach out to the community or
-          report an issue.
-        </p>
-        <div
-          class="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a
-            href="https://discord.gg/enigmadev"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-secondary w-full sm:w-auto"
-          >
-            <span>💬</span>
-            Ask on Discord
-          </a>
-          <a
-            href="https://github.com/TajsMods/Core/issues/new"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-secondary w-full sm:w-auto"
-          >
-            <span>🐛</span>
-            Report an Issue
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+			<!-- Still need help? -->
+			<div
+				class="mt-16 text-center p-10 glass-card rounded-2xl border border-outline-variant"
+			>
+				<h3
+					class="text-xl font-bold mb-4 text-on-background uppercase tracking-widest font-mono"
+				>
+					Still have questions?
+				</h3>
+				<p class="text-on-surface-variant mb-8 max-w-md mx-auto text-sm">
+					Can't find what you're looking for? Reach out to the community or
+					report an issue.
+				</p>
+				<div
+					class="flex flex-col sm:flex-row items-center justify-center gap-4"
+				>
+					<a
+						href="https://discord.gg/enigmadev"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn-secondary w-full sm:w-auto"
+					>
+						<span>💬</span>
+						Ask on Discord
+					</a>
+					<a
+						href="https://github.com/TajsMods/Core/issues/new"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn-secondary w-full sm:w-auto"
+					>
+						<span>🐛</span>
+						Report an Issue
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 </SiteLayout>

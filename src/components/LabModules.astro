@@ -30,7 +30,7 @@ const moduleStyleMap: Record<string, any> = {
   }
 };
 ---
-<section class="max-w-[1440px] mx-auto px-8 py-20 border-t border-glass-border">
+<section class="max-w-360 mx-auto px-8 py-20 border-t border-glass-border">
   <h2 class="font-headline text-3xl font-semibold mb-12 text-on-background flex items-center gap-3">
     <span class="material-symbols-outlined text-surface-tint">grid_view</span>
     Available Modules
@@ -47,7 +47,7 @@ const moduleStyleMap: Record<string, any> = {
             <h3 class="font-headline text-xl font-semibold text-on-surface">{module.name}</h3>
             <span class="px-2 py-1 bg-primary-container rounded text-xs font-label text-on-primary-container font-bold">v{module.version}</span>
           </div>
-          <p class="text-on-surface-variant font-body mb-8 flex-grow">
+          <p class="text-on-surface-variant font-body mb-8 grow">
             {module.shortDescription}
           </p>
           <div class="flex justify-between items-center mt-auto border-t border-glass-border pt-4">

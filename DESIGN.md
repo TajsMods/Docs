@@ -89,12 +89,16 @@ spacing:
   margin: 24px
 ---
 
+# Design System for Taj's Mods
+
 ## Brand & Style
+
 This design system shifts away from ethereal abstraction toward a grounded, technical environment designed for precision and utility. The brand personality is that of an advanced engineering hub—quiet, professional, and highly efficient. It prioritizes clarity and functional hierarchy over decorative elements, catering to users who value performance and deep customization.
 
 The visual style is a marriage of **Minimalism** and **Technical Utility**. It utilizes a "dark-mode first" philosophy where depth is communicated through tonal shifts rather than heavy shadows. The aesthetic is inspired by high-end diagnostic tools and modular hardware interfaces, stripping away "sci-fi" clutter to focus on data density and clear interaction paths.
 
 ## Colors
+
 The palette is rooted in a deep, near-black navy to provide a stable, low-strain foundation for long sessions. Surfaces use subtle variations of charcoal to create logical groupings without breaking the monolithic feel of the UI.
 
 - **Primary Accent:** A technical Cyan is reserved strictly for active states, primary actions, and critical status indicators.
@@ -102,17 +106,20 @@ The palette is rooted in a deep, near-black navy to provide a stable, low-strain
 - **Functional Colors:** Success, warning, and error states should utilize the same technical vibrancy as the primary cyan but in their respective hues (Emerald and Crimson), maintaining a consistent saturation level.
 
 ## Typography
+
 The typography system uses a dual-font approach to balance character with readability. **Space Grotesk** is utilized for headlines, labels, and data points to provide a distinct, geometric "lab" feel. Its unique apertures and technical construction reinforce the engineering aesthetic.
 
 For long-form text and general UI descriptions, **Inter** is used to ensure maximum legibility and neutral tone. Small labels and "metadata" should frequently use uppercase styling with slight tracking increases to mimic technical schematics and serial-number markings.
 
 ## Layout & Spacing
-The design system employs a strict **fixed-grid** model for desktop views to maintain the "instrument panel" feel, while transitioning to a fluid model for smaller viewports. 
+
+The design system employs a strict **fixed-grid** model for desktop views to maintain the "instrument panel" feel, while transitioning to a fluid model for smaller viewports.
 
 A 12-column grid provides the framework, with a 4px base unit governing all internal padding and margins. Elements are encouraged to align to the grid borders to create a structured, "snapped-in" look. Use generous margins on the exterior of the primary container to focus the user's eye on the central "workspace," while internal gutters remain tight (16px) to maximize information density within modules.
 
 ## Elevation & Depth
-In this design system, depth is achieved through **low-contrast outlines** and tonal layering rather than traditional shadows. 
+
+In this design system, depth is achieved through **low-contrast outlines** and tonal layering rather than traditional shadows.
 
 - **Level 0 (Background):** The deepest navy/black canvas.
 - **Level 1 (Panels):** Solid charcoal surfaces with a 1px border (#FFFFFF at 10% opacity).
@@ -122,23 +129,30 @@ In this design system, depth is achieved through **low-contrast outlines** and t
 Shadows should be avoided entirely, except for a very soft, primary-colored outer glow (10px blur, 20% opacity) applied to active primary buttons and status indicators.
 
 ## Shapes
+
 The shape language is "Moderate-Technical." A base radius of 8px (Level 2) is applied to most components, including buttons, input fields, and small panels. This provides a balanced, approachable feel that remains grounded in professional utility without appearing overly geometric or sharp.
 
-Larger containers may use a 16px radius (rounded-lg) to define the primary workspace, while internal structural lines and dividers maintain sharp 90-degree angles to preserve the modding hub’s architectural integrity.
+Larger containers may use a 16px radius (rounded-lg) to define the primary workspace, while internal structural lines and dividers maintain sharp 90-degree angles to preserve the modding hub's architectural integrity.
 
 ## Components
+
 ### Buttons
+
 - **Primary:** Solid background (Cyan), dark text. On hover, a low-profile cyan glow appears.
 - **Secondary:** Ghost style with a 1px border. Background fills slightly on hover.
 
 ### Status Indicators
+
 Small circular dots. Use a "pulsing" animation for "Active" or "Processing" states. The color should always match the primary cyan for "OK" and technical blue for "Standby."
 
 ### Input Fields
+
 Darker than the panel surface. Borders are 1px and only turn Cyan when focused. Use monospaced numbers (from Space Grotesk) for numerical inputs.
 
 ### Cards & Panels
+
 Solid fills. Headers should be separated from content by a 1px horizontal rule. Avoid internal padding larger than 24px to keep the interface feeling compact and utility-driven.
 
 ### Chips
+
 Small, rectangular with a 4px radius. High-contrast text on a very dark background, using uppercase Space Grotesk for a "tagging" or "serial" look.

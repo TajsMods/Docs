@@ -11,17 +11,28 @@ export interface Screenshot {
   mod: string; // The mod this screenshot belongs to (folder name)
 }
 
-const SCREENSHOTS_DIR = path.resolve(import.meta.dirname, '../../public/screenshots');
+const SCREENSHOTS_DIR_CANDIDATES = [
+  path.resolve(process.cwd(), 'public/screenshots'),
+  path.resolve(import.meta.dirname, '../../public/screenshots'),
+];
+
+function resolveScreenshotsDir(): string | null {
+  for (const candidate of SCREENSHOTS_DIR_CANDIDATES) {
+    if (fs.existsSync(candidate)) return candidate;
+  }
+  return null;
+}
 
 /**
  * Auto-scan screenshots directory recursively
  */
 export function getScreenshots(): Screenshot[] {
   const screenshots: Screenshot[] = [];
+  const screenshotsDir = resolveScreenshotsDir();
   
   try {
-    if (!fs.existsSync(SCREENSHOTS_DIR)) {
-      console.warn('[screenshots] Directory not found:', SCREENSHOTS_DIR);
+    if (!screenshotsDir) {
+      console.warn('[screenshots] Directory not found. Checked:', SCREENSHOTS_DIR_CANDIDATES);
       return screenshots;
     }
     
@@ -61,9 +72,7 @@ export function getScreenshots(): Screenshot[] {
       }
     };
 
-    scanDir(SCREENSHOTS_DIR);
-    
-    console.log(`[screenshots] Found ${screenshots.length} screenshots`);
+    scanDir(screenshotsDir);
   } catch (error) {
     console.error('[screenshots] Error scanning directory:', error);
   }

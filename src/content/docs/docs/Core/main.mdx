@@ -19,6 +19,16 @@ Use these runtime services first when integrating another Taj's mod:
 - [`TajsCoreIconRegistry`](https://github.com/TajsMods/Core/blob/main/core/icon_registry.gd) - icon indexing for picker/browser flows.
 - [`TajsCoreModuleRegistry`](https://github.com/TajsMods/Core/blob/main/core/module_registry.gd) - module metadata and min-core gating.
 - [`TajsCoreUiManager`](https://github.com/TajsMods/Core/blob/main/core/ui/ui_manager.gd) - settings tabs, HUD injection, popups, icon browser.
+- [`TajsCoreFontRegistry`](https://github.com/TajsMods/Core/blob/main/core/font_registry.gd) - font registration, class/node font application, generated themes.
+- [`TajsCoreThemeManager`](https://github.com/TajsMods/Core/blob/main/core/theme_manager.gd) - theme profiles and tooltip styling.
+- [`TajsCoreFileVariations`](https://github.com/TajsMods/Core/blob/main/core/file_variations.gd) - namespaced file variation registration and masks.
+- [`TajsCoreWindowMenus`](https://github.com/TajsMods/Core/blob/main/core/window_menus.gd) - window tab/button registration and orchestration.
+- [`TajsCoreTreeRegistry`](https://github.com/TajsMods/Core/blob/main/core/tree_registry.gd) - research/ascension tree contribution APIs.
+- [`TajsCoreNodeRegistry`](https://github.com/TajsMods/Core/blob/main/core/nodes/node_registry.gd) - node/window type registration.
+- [`TajsCoreAssets`](https://github.com/TajsMods/Core/blob/main/core/assets.gd) - asset/icon loading and icon-dir registration.
+- [`TajsCoreLocalization`](https://github.com/TajsMods/Core/blob/main/core/localization.gd) - translation file/dir registration.
+- [`TajsCoreStorage`](https://github.com/TajsMods/Core/blob/main/core/storage.gd) - module-scoped config/json storage.
+- [`TajsCoreLogger`](https://github.com/TajsMods/Core/blob/main/core/logger.gd) - structured log output and ring buffer.
 
 ### Practical Start
 
@@ -47,6 +57,7 @@ if core == null:
 - Settings schema: `core.register_settings_schema(...)`
 - Icons: `core.register_icon(...)`
 - Window tabs: `core.register_window_tab(...)`
+- Persistent metadata: `core.metadata_set(...)` / `core.metadata_get(...)`
 
 6. Quick source links for those APIs:
 - Runtime wrappers: [`core/runtime.gd`](https://github.com/TajsMods/Core/blob/main/core/runtime.gd)
@@ -54,6 +65,72 @@ if core == null:
 - Settings schema registry: [`core/settings.gd`](https://github.com/TajsMods/Core/blob/main/core/settings.gd)
 - Icon browser/registry: [`core/icon_registry.gd`](https://github.com/TajsMods/Core/blob/main/core/icon_registry.gd)
 - Window tabs/menu registry: [`core/window_menus.gd`](https://github.com/TajsMods/Core/blob/main/core/window_menus.gd)
+
+### Result dictionaries
+
+Runtime/service wrappers use:
+- Success: `{ "ok": true, "error": "", ...payload }`
+- Failure: `{ "ok": false, "error": "<code>", ...context }`
+
+`payload`/`context` keys depend on the called method.
+
+### Namespaced IDs
+
+Required format: `ModId.local_id`
+
+Examples:
+- `TajemnikTV-QoL.toggle_overlay`
+- `TajemnikTV-QoL.tools_tab`
+- `TajemnikTV-QoL.body_font`
+
+Why it matters:
+- prevents id collisions across mods
+- enables ownership-aware diagnostics and registries
+- keeps migration/compat behavior predictable
+
+## Metadata Service (2026-05)
+
+Core runtime now exposes stable metadata wrappers:
+- `core.metadata_get(scope, owner_id, key, fallback := null)`
+- `core.metadata_set(scope, owner_id, key, value)`
+- `core.metadata_delete(scope, owner_id, key)`
+- `core.metadata_list(scope, owner_id := "")`
+- `core.metadata_migrate(mod_id, from_version, to_version, callable)`
+
+Supported scopes:
+- `save`, `board`, `workspace`, `window`, `node`, `schematic`, `global`
+
+Rules:
+- Keys must be namespaced: `mod_id.key`
+- Values must be JSON-compatible (MVP)
+- Save-scoped metadata is persisted in save payload (`desktop_data.tajs_core_metadata`) with `user://` fallback
+- Diagnostics include metadata scope counts and namespace summaries
+
+## Board Geometry / Spatial Query Service (2026-05)
+
+Core runtime now exposes board-space helpers backed by cached desktop geometry:
+- `core.board_get_bounds(opts := {})`
+- `core.board_get_viewport_rect()`
+- `core.board_query_rect(rect, opts := {})`
+- `core.board_get_item_bounds(item_id)`
+- `core.board_focus_item(item_id, opts := {})`
+
+Service details:
+- Tracks windows, groups, and sticky notes when available.
+- Uses conservative cache invalidation from desktop/window events plus tree add/remove signals.
+- Keeps fallbacks for unknown item types and missing optional layers.
+
+## Settings Schema v2 (2026-05)
+
+- Backward compatible with legacy `register_settings_schema(module_id, { key: entry })`.
+- Supports v2 payload with `schema_version`, `entries`, and `migrations`.
+- New entry metadata: `display_name`, `tags/search_terms`, `advanced`, `dangerous`, `requires_restart`, `live_apply`, `validator`.
+- New runtime wrappers:
+  - `core.get_setting(module_id, setting_id, fallback := null)`
+  - `core.set_setting(module_id, setting_id, value)`
+  - `core.reset_setting(module_id, setting_id)`
+  - `core.get_pending_restart_settings()`
+- Invalid schema entries now return structured errors and are skipped without crashing Core.
 
 ## Table of Contents
 

@@ -5,256 +5,282 @@ import PageActions from "../components/PageActions.astro";
 import { license } from "../data/parse-license";
 
 const credits = {
-  creator: {
-    name: "TajemnikTV",
-    role: "Creator & Lead Developer",
-    links: [
-      { name: "GitHub", url: "https://github.com/TajemnikTV" },
-      { name: "Discord", url: "https://discord.gg/enigmadev" },
-    ],
-  },
-  acknowledgments: [
-    {
-      name: "Upload Labs Developers",
-      reason: "Creating an amazing game with mod support",
-    },
-    { name: "EnigmaDev Community", reason: "Testing, feedback, and support" },
-    {
-      name: "Steam Workshop Users",
-      reason: "Using the mods and providing feedback",
-    },
-  ],
-  technologies: [
-    { name: "Godot Engine", url: "https://godotengine.org/" },
-    { name: "Astro", url: "https://astro.build/" },
-    { name: "Tailwind CSS", url: "https://tailwindcss.com/" },
-    { name: "Starlight", url: "https://starlight.astro.build/" },
-  ],
+	creator: {
+		name: "TajemnikTV",
+		role: "Creator & Lead Developer",
+		links: [
+			{ name: "GitHub", url: "https://github.com/TajemnikTV" },
+			{ name: "Discord", url: "https://discord.gg/enigmadev" },
+		],
+	},
+	acknowledgments: [
+		{
+			name: "Upload Labs Developers",
+			reason: "Creating an amazing game with mod support",
+		},
+		{ name: "EnigmaDev Community", reason: "Testing, feedback, and support" },
+		{
+			name: "Steam Workshop Users",
+			reason: "Using the mods and providing feedback",
+		},
+	],
+	technologies: [
+		{ name: "Godot Engine", url: "https://godotengine.org/" },
+		{ name: "Astro", url: "https://astro.build/" },
+		{ name: "Tailwind CSS", url: "https://tailwindcss.com/" },
+		{ name: "Starlight", url: "https://starlight.astro.build/" },
+	],
 };
 ---
 
 <SiteLayout
-  title="Credits & License"
-  description="Acknowledgments, credits, and licensing information for Taj's Mods."
+	title="Credits & License"
+	description="Acknowledgments, credits, and licensing information for Taj's Mods."
 >
-  <section class="py-16 md:py-20 relative overflow-hidden border-b border-white/5">
-    <div class="container-wide text-center relative z-10">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-on-background">Credits & License</h1>
-      <p class="text-on-surface-variant max-w-2xl mx-auto text-lg">
-        Acknowledgments and licensing information
-      </p>
-    </div>
-    <div class="absolute -top-24 -right-24 w-96 h-96 bg-surface-tint/5 rounded-full blur-[100px]"></div>
-  </section>
+	<section
+		class="py-16 md:py-20 relative overflow-hidden border-b border-white/5"
+	>
+		<div class="container-wide text-center relative z-10">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4 text-on-background">
+				Credits & License
+			</h1>
+			<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">
+				Acknowledgments and licensing information
+			</p>
+		</div>
+		<div
+			class="absolute -top-24 -right-24 w-96 h-96 bg-surface-tint/5 rounded-full blur-[100px]"
+		>
+		</div>
+	</section>
 
-  <section class="section relative z-10">
-    <div class="container-narrow">
-      <!-- Creator -->
-      <div class="glass-card mb-8 text-center p-8 rounded-2xl">
-        <div
-          class="inline-flex w-20 h-20 rounded-full bg-surface-tint/10 items-center justify-center mb-4 border border-surface-tint/20"
-        >
-          <span class="text-4xl">👨‍💻</span>
-        </div>
-        <h2 class="text-2xl font-bold mb-1 text-on-surface">{credits.creator.name}</h2>
-        <p class="text-on-surface-variant mb-6 uppercase tracking-widest text-xs font-mono">
-          {credits.creator.role}
-        </p>
-        <div class="flex justify-center gap-4">
-          {
-            credits.creator.links.map((link) => (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-surface-tint hover:underline inline-flex items-center gap-1 text-sm font-medium"
-              >
-                {link.name}
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
-            ))
-          }
-        </div>
-      </div>
+	<section class="section relative z-10">
+		<div class="container-narrow">
+			<!-- Creator -->
+			<div class="glass-card mb-8 text-center p-8 rounded-2xl">
+				<div
+					class="inline-flex w-20 h-20 rounded-full bg-surface-tint/10 items-center justify-center mb-4 border border-surface-tint/20"
+				>
+					<span class="text-4xl">👨‍💻</span>
+				</div>
+				<h2 class="text-2xl font-bold mb-1 text-on-surface">
+					{credits.creator.name}
+				</h2>
+				<p
+					class="text-on-surface-variant mb-6 uppercase tracking-widest text-xs font-mono"
+				>
+					{credits.creator.role}
+				</p>
+				<div class="flex justify-center gap-4">
+					{
+						credits.creator.links.map((link) => (
+							<a
+								href={link.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-surface-tint hover:underline inline-flex items-center gap-1 text-sm font-medium"
+							>
+								{link.name}
+								<svg
+									class="w-4 h-4"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+									/>
+								</svg>
+							</a>
+						))
+					}
+				</div>
+			</div>
 
-      <!-- Acknowledgments -->
-      <div class="glass-card mb-8 p-8 rounded-2xl">
-        <h2 class="text-xl font-bold mb-8 flex items-center gap-2 text-on-surface font-mono uppercase tracking-widest">
-          <span>🙏</span>
-          Acknowledgments
-        </h2>
-        <div class="space-y-6">
-          {
-            credits.acknowledgments.map((ack) => (
-              <div class="flex items-start gap-4 group">
-                <span class="text-surface-tint mt-1 text-xl group-hover:scale-125 transition-transform duration-300">♦</span>
-                <div>
-                  <h4 class="font-bold text-on-surface group-hover:text-surface-tint transition-colors">{ack.name}</h4>
-                  <p class="text-on-surface-variant text-sm italic">
-                    {ack.reason}
-                  </p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+			<!-- Acknowledgments -->
+			<div class="glass-card mb-8 p-8 rounded-2xl">
+				<h2
+					class="text-xl font-bold mb-8 flex items-center gap-2 text-on-surface font-mono uppercase tracking-widest"
+				>
+					<span>🙏</span>
+					Acknowledgments
+				</h2>
+				<div class="space-y-6">
+					{
+						credits.acknowledgments.map((ack) => (
+							<div class="flex items-start gap-4 group">
+								<span class="text-surface-tint mt-1 text-xl group-hover:scale-125 transition-transform duration-300">
+									♦
+								</span>
+								<div>
+									<h4 class="font-bold text-on-surface group-hover:text-surface-tint transition-colors">
+										{ack.name}
+									</h4>
+									<p class="text-on-surface-variant text-sm italic">
+										{ack.reason}
+									</p>
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</div>
 
-      <!-- Technologies -->
-      <div class="glass-card mb-8 p-8 rounded-2xl">
-        <h2 class="text-xl font-bold mb-8 flex items-center gap-2 text-on-surface font-mono uppercase tracking-widest">
-          <span>🛠️</span>
-          Built With
-        </h2>
-        <div class="flex flex-wrap gap-4">
-          {
-            credits.technologies.map((tech) => (
-              <a
-                href={tech.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-container border border-outline-variant text-on-surface hover:bg-surface-container-high hover:text-surface-tint hover:border-surface-tint/30 transition-all group"
-              >
-                <span class="font-medium">{tech.name}</span>
-                <svg
-                  class="w-4 h-4 text-on-surface-variant group-hover:text-surface-tint transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
-            ))
-          }
-        </div>
-      </div>
+			<!-- Technologies -->
+			<div class="glass-card mb-8 p-8 rounded-2xl">
+				<h2
+					class="text-xl font-bold mb-8 flex items-center gap-2 text-on-surface font-mono uppercase tracking-widest"
+				>
+					<span>🛠️</span>
+					Built With
+				</h2>
+				<div class="flex flex-wrap gap-4">
+					{
+						credits.technologies.map((tech) => (
+							<a
+								href={tech.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-container border border-outline-variant text-on-surface hover:bg-surface-container-high hover:text-surface-tint hover:border-surface-tint/30 transition-all group"
+							>
+								<span class="font-medium">{tech.name}</span>
+								<svg
+									class="w-4 h-4 text-on-surface-variant group-hover:text-surface-tint transition-colors"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+									/>
+								</svg>
+							</a>
+						))
+					}
+				</div>
+			</div>
 
-      <!-- License (parsed from LICENSE.md) -->
-      <div class="glass-card p-8 rounded-2xl">
-        <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-on-surface font-mono uppercase tracking-widest">
-          <span>📜</span>
-          {license.title}
-        </h2>
+			<!-- License (parsed from LICENSE.md) -->
+			<div class="glass-card p-8 rounded-2xl">
+				<h2
+					class="text-xl font-bold mb-6 flex items-center gap-2 text-on-surface font-mono uppercase tracking-widest"
+				>
+					<span>📜</span>
+					{license.title}
+				</h2>
 
-        <div class="prose prose-invert prose-sm max-w-none">
-          <!-- Warning Banner -->
-          <div
-            class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6 mb-8"
-          >
-            <h4 class="text-amber-400 font-bold mb-3 uppercase text-xs tracking-widest font-mono flex items-center gap-2">
-              <span class="material-symbols-outlined text-sm">warning</span>
-              Proprietary Status
-            </h4>
-            <p class="text-on-surface text-sm leading-relaxed">
-              The source code for Taj's Mods is publicly visible on GitHub for
-              transparency and learning purposes, but it is <strong
-                class="text-surface-tint"
-                >not open source</strong
-              >. All rights are reserved. Unauthorized redistribution or commercial use is strictly prohibited.
-            </p>
-          </div>
+				<div class="prose prose-invert prose-sm max-w-none">
+					<!-- Warning Banner -->
+					<div
+						class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6 mb-8"
+					>
+						<h4
+							class="text-amber-400 font-bold mb-3 uppercase text-xs tracking-widest font-mono flex items-center gap-2"
+						>
+							<span class="material-symbols-outlined text-sm">warning</span>
+							Proprietary Status
+						</h4>
+						<p class="text-on-surface text-sm leading-relaxed">
+							The source code for Taj's Mods is publicly visible on GitHub for
+							transparency and learning purposes, but it is <strong
+								class="text-surface-tint">not open source</strong
+							>. All rights are reserved. Unauthorized redistribution or
+							commercial use is strictly prohibited.
+						</p>
+					</div>
 
-          <!-- Copyright -->
-          <div
-            class="bg-surface-container border border-outline-variant rounded-xl p-6 font-mono text-xs mb-8 text-on-surface-variant"
-          >
-            <p class="font-bold text-on-surface">{license.copyright}</p>
-          </div>
+					<!-- Copyright -->
+					<div
+						class="bg-surface-container border border-outline-variant rounded-xl p-6 font-mono text-xs mb-8 text-on-surface-variant"
+					>
+						<p class="font-bold text-on-surface">{license.copyright}</p>
+					</div>
 
-          <!-- License Sections (Collapsible) -->
-          <details class="group">
-            <summary
-              class="cursor-pointer font-mono text-xs uppercase tracking-widest text-surface-tint hover:text-white transition-colors list-none flex items-center gap-2"
-            >
-              <svg
-                class="w-4 h-4 transition-transform group-open:rotate-90"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"></path>
-              </svg>
-              Execute Protocol: View Terms
-            </summary>
+					<!-- License Sections (Collapsible) -->
+					<details class="group">
+						<summary
+							class="cursor-pointer font-mono text-xs uppercase tracking-widest text-surface-tint hover:text-white transition-colors list-none flex items-center gap-2"
+						>
+							<svg
+								class="w-4 h-4 transition-transform group-open:rotate-90"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 5l7 7-7 7"></path>
+							</svg>
+							Execute Protocol: View Terms
+						</summary>
 
-            <div
-              class="mt-8 space-y-8 pl-6 border-l border-white/10"
-            >
-              {
-                license.sections.map((section) => (
-                  <div>
-                    <h3 class="font-bold text-on-surface mb-3 text-sm uppercase tracking-tight">
-                      {section.title}
-                    </h3>
-                    <div
-                      class="text-on-surface-variant text-sm leading-relaxed license-content"
-                      set:html={section.contentHtml}
-                    />
-                  </div>
-                ))
-              }
-            </div>
-          </details>
+						<div class="mt-8 space-y-8 pl-6 border-l border-white/10">
+							{
+								license.sections.map((section) => (
+									<div>
+										<h3 class="font-bold text-on-surface mb-3 text-sm uppercase tracking-tight">
+											{section.title}
+										</h3>
+										<div
+											class="text-on-surface-variant text-sm leading-relaxed license-content"
+											set:html={section.contentHtml}
+										/>
+									</div>
+								))
+							}
+						</div>
+					</details>
 
-          <!-- GitHub Link -->
-          <div class="mt-12 pt-8 border-t border-white/10">
-            <a
-              href={siteConfig.githubOrg}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-secondary"
-            >
-              <span>📂</span>
-              View LICENSE Repository
-            </a>
-          </div>
-        </div>
-      </div>
+					<!-- GitHub Link -->
+					<div class="mt-12 pt-8 border-t border-white/10">
+						<a
+							href={siteConfig.githubOrg}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="btn-secondary"
+						>
+							<span>📂</span>
+							View LICENSE Repository
+						</a>
+					</div>
+				</div>
+			</div>
 
-      <!-- Contributing Note -->
-      <div
-        class="mt-12 p-8 glass-card bg-surface-tint/5 border border-surface-tint/20 rounded-2xl text-center"
-      >
-        <h3 class="text-xl font-bold mb-4 text-on-surface uppercase tracking-widest font-mono">Contributor Directive</h3>
-        <p class="text-on-surface-variant text-sm mb-8 max-w-lg mx-auto">
-          Contributions are welcome and encouraged! If you have improvements, please review the standardized contributing guidelines on GitHub.
-        </p>
-        <a
-          href={`${siteConfig.githubOrg}/Core/blob/main/CONTRIBUTING.md`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-primary"
-        >
-          Access Contribution Guide
-        </a>
-      </div>
+			<!-- Contributing Note -->
+			<div
+				class="mt-12 p-8 glass-card bg-surface-tint/5 border border-surface-tint/20 rounded-2xl text-center"
+			>
+				<h3
+					class="text-xl font-bold mb-4 text-on-surface uppercase tracking-widest font-mono"
+				>
+					Contributor Directive
+				</h3>
+				<p class="text-on-surface-variant text-sm mb-8 max-w-lg mx-auto">
+					Contributions are welcome and encouraged! If you have improvements,
+					please review the standardized contributing guidelines on GitHub.
+				</p>
+				<a
+					href={`${siteConfig.githubOrg}/Core/blob/main/CONTRIBUTING.md`}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="btn-primary"
+				>
+					Access Contribution Guide
+				</a>
+			</div>
 
-      <!-- Page Actions -->
-      <div class="mt-16 pt-8 border-t border-white/10">
-        <PageActions editPath="/credits.astro" />
-      </div>
-    </div>
-  </section>
+			<!-- Page Actions -->
+			<div class="mt-16 pt-8 border-t border-white/10">
+				<PageActions editPath="/credits.astro" />
+			</div>
+		</div>
+	</section>
 </SiteLayout>

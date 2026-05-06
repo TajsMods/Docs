@@ -5,6 +5,7 @@
 import { features } from './features';
 import { faq } from './faq';
 import { sitePath } from '../utils/urls';
+import { siteConfig } from '../config/site';
 
 export interface SearchItem {
   id: string;
@@ -21,7 +22,6 @@ const pages: SearchItem[] = [
   { id: 'page-home', title: 'Home', description: 'Homepage with overview and quick links', category: 'page', href: sitePath('/'), icon: '🏠' },
   { id: 'page-features', title: 'Features', description: 'Browse all mod features', category: 'page', href: sitePath('/features/'), icon: '✨' },
   { id: 'page-faq', title: 'FAQ', description: 'Frequently asked questions', category: 'page', href: sitePath('/faq/'), icon: '❓' },
-  { id: 'page-roadmap', title: 'Roadmap', description: 'Planned features and improvements', category: 'page', href: sitePath('/roadmap/'), icon: '🗺️' },
   { id: 'page-support', title: 'Support', description: 'Get help and support the project', category: 'page', href: sitePath('/support/'), icon: '💙' },
   { id: 'page-docs', title: 'Documentation', description: 'Technical documentation and guides', category: 'page', href: sitePath('/docs/'), icon: '📚' },
   { id: 'page-troubleshooting', title: 'Troubleshooting', description: 'Diagnostic checklist and common fixes', category: 'page', href: sitePath('/troubleshooting/'), icon: '🔧' },
@@ -31,7 +31,7 @@ const pages: SearchItem[] = [
 
 // Quick actions
 const actions: SearchItem[] = [
-  { id: 'action-steam', title: 'Subscribe on Steam', description: 'Open Steam Workshop page', category: 'action', href: 'https://steamcommunity.com/sharedfiles/filedetails/?id=3628222709', icon: '🎮' },
+  { id: 'action-steam', title: 'Subscribe on Steam', description: 'Open Steam Workshop page', category: 'action', href: siteConfig.steamWorkshop, icon: '🎮' },
   { id: 'action-github', title: 'Open GitHub', description: 'View source code and issues', category: 'action', href: 'https://github.com/TajsMods', icon: '💻' },
   { id: 'action-discord', title: 'Join Discord', description: 'EnigmaDev community server', category: 'action', href: 'https://discord.gg/enigmadev', icon: '💬' },
   { id: 'action-report', title: 'Report Issue', description: 'Report a bug on GitHub', category: 'action', href: 'https://github.com/TajsMods/Core/issues/new', icon: '🐛' },
@@ -50,7 +50,7 @@ export function generateSearchIndex(): SearchItem[] {
       title: feature.title,
       description: feature.description,
       category: 'feature',
-      href: `/features/#${feature.id}`,
+      href: sitePath(`/features/#${feature.id}`),
       icon: feature.icon,
       tags: feature.tags,
     });
@@ -63,7 +63,7 @@ export function generateSearchIndex(): SearchItem[] {
       title: item.question,
       description: item.answer.substring(0, 100) + '...',
       category: 'faq',
-      href: `/faq/#${item.id}`,
+      href: sitePath(`/faq/#${item.id}`),
       icon: '❓',
     });
   }

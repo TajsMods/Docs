@@ -55,9 +55,9 @@ export const features: Feature[] = [
   {
     id: 'toast-history',
     title: 'Toast History',
-    description: 'Never miss a notification again. Check the log via the bell icon to see past notifications.',
+    description: 'Actionable notification inbox with categories, unread/warning filters, dismiss/snooze, and optional jump/settings/diagnostics actions.',
     category: 'general',
-    tags: ['notifications', 'history', 'log'],
+    tags: ['notifications', 'history', 'log', 'filters', 'actions'],
     icon: '🔔',
   },
   {
@@ -161,6 +161,15 @@ export const features: Feature[] = [
     category: 'tools',
     tags: ['navigation', 'jump', 'groups', 'notes'],
     icon: '🧭',
+  },
+  {
+    id: 'find-anything',
+    title: 'Find Anything',
+    description: 'Search nodes, groups, sticky notes, and disconnected/problem nodes, then jump and highlight.',
+    category: 'tools',
+    tags: ['search', 'jump', 'nodes', 'groups', 'notes', 'disconnected'],
+    icon: '🔎',
+    highlight: true,
   },
   {
     id: 'screenshot-selection',

@@ -4,21 +4,21 @@ import { screenshots } from "../../data/screenshots";
 import { mods } from "../../data/mods";
 
 export function getStaticPaths() {
-  // Get mod names from the mods registry (excluding the main bundle)
-  const registeredMods = mods
-    .filter((m) => m.slug !== "tajs-mod")
-    .map((m) => m.name);
+	// Get mod names from the mods registry (excluding the main bundle)
+	const registeredMods = mods
+		.filter((m) => m.slug !== "tajs-mod")
+		.map((m) => m.name);
 
-  // Also include any mods found in screenshot folders
-  const screenshotMods = [...new Set(screenshots.map((s) => s.mod))];
+	// Also include any mods found in screenshot folders
+	const screenshotMods = [...new Set(screenshots.map((s) => s.mod))];
 
-  // Combine both sources
-  const allMods = [...new Set([...registeredMods, ...screenshotMods])];
+	// Combine both sources
+	const allMods = [...new Set([...registeredMods, ...screenshotMods])];
 
-  return allMods.map((mod) => ({
-    params: { mod },
-    props: { modName: mod },
-  }));
+	return allMods.map((mod) => ({
+		params: { mod },
+		props: { modName: mod },
+	}));
 }
 
 const { modName } = Astro.props;
@@ -28,49 +28,50 @@ const filteredScreenshots = screenshots.filter((s) => s.mod === modName);
 ---
 
 <SiteLayout title={`${modName} Screenshots`}>
-  <div class="pt-32 pb-20 px-4 sm:px-6 max-w-7xl mx-auto">
-    <div class="text-center mb-16 relative">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
-        {modName} Gallery
-      </h1>
-      <p class="text-slate-400 max-w-2xl mx-auto text-lg">
-        Explore visual highlights and features from the {modName} mod.
-      </p>
-      <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-surface-tint/5 rounded-full blur-[80px] pointer-events-none"></div>
-    </div>
+	<div class="pt-32 pb-20 px-4 sm:px-6 max-w-7xl mx-auto">
+		<div class="text-center mb-16 relative">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
+				{modName} Gallery
+			</h1>
+			<p class="text-slate-400 max-w-2xl mx-auto text-lg">
+				Explore visual highlights and features from the {modName} mod.
+			</p>
+			<div
+				class="absolute -top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-surface-tint/5 rounded-full blur-[80px] pointer-events-none"
+			>
+			</div>
+		</div>
 
-    {
-      filteredScreenshots.length > 0 ? (
-        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-          {filteredScreenshots.map((shot) => (
-            <div class="break-inside-avoid group relative rounded-xl overflow-hidden border border-white/5 bg-surface-container hover:border-surface-tint/50 transition-all duration-300">
-              <img
-                src={`${import.meta.env.BASE_URL}${shot.src.startsWith('/') ? shot.src.slice(1) : shot.src}`}
-                alt={shot.alt}
-                class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <p class="text-white font-medium text-sm translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  {shot.alt}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-20 bg-surface-container rounded-xl border border-white/5">
-          <p class="text-xl text-on-surface-variant">
-            No screenshots found for this mod yet.
-          </p>
-          <a
-            href={`${import.meta.env.BASE_URL}mods/`}
-            class="btn-primary mt-6 inline-block"
-          >
-            Explore other mods
-          </a>
-        </div>
-      )
-    }
-  </div>
+		{
+			filteredScreenshots.length > 0 ?
+				<div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+					{filteredScreenshots.map((shot) => (
+						<div class="break-inside-avoid group relative rounded-xl overflow-hidden border border-white/5 bg-surface-container hover:border-surface-tint/50 transition-all duration-300">
+							<img
+								src={`${import.meta.env.BASE_URL}${shot.src.startsWith("/") ? shot.src.slice(1) : shot.src}`}
+								alt={shot.alt}
+								class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+								loading="lazy"
+							/>
+							<div class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+								<p class="text-white font-medium text-sm translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+									{shot.alt}
+								</p>
+							</div>
+						</div>
+					))}
+				</div>
+			:	<div class="text-center py-20 bg-surface-container rounded-xl border border-white/5">
+					<p class="text-xl text-on-surface-variant">
+						No screenshots found for this mod yet.
+					</p>
+					<a
+						href={`${import.meta.env.BASE_URL}mods/`}
+						class="btn-primary mt-6 inline-block"
+					>
+						Explore other mods
+					</a>
+				</div>
+		}
+	</div>
 </SiteLayout>
